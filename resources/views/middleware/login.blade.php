@@ -1,0 +1,30 @@
+@extends('template.master')
+
+@section('dashboard')
+    <div class="position-absolute messages d-flex flex-column w-100 align-items-center pe-none">
+        @if (session()->has('success'))
+            <div class="alert alert-success pe-none">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
+    <div class="container w-25 h-75">
+        <form class="d-flex flex-column gap-3 mt-5" method="POST">
+            @csrf
+            <div class="h3 align-self-center">Login</div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Username:</label>
+                <input type="text" class="form-control" name="name">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="password"id="password">
+                <input type="checkbox" name="check" id="check" class="form-check-input"> <label
+                    for="check"class="form-check-label">Show Password</label>
+            </div>
+            <button class="btn btn-primary" type="submit" name="submit">Login Sekarang</button>
+            <hr>
+            <p class="align-self-center">Masih belum daftar? <a href="/register">Daftar Sekarang</a></p>
+        </form>
+    </div>
+@endsection
