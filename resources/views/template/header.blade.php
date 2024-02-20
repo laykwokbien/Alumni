@@ -47,7 +47,7 @@
                                 <li><a class="dropdown-item" href="{{ url('/view/alumni') }}">Data Alumni</a></li>
                             </ul>
                         </div>
-                        @auth
+                        @if (Auth::guard('web')->check() || Auth::guard('guru')->check() || Auth::guard('admin')->check())
                             <div class="nav-item dropdown">
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#navbarNavLightDropdown" aria-controls="navbarNavLightDropdown"
@@ -57,7 +57,15 @@
                                 <div class="collapse navbar-collapse" id="navbarNavLightDropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown"aria-expanded="false">
-                                        Welcome back, {{ Auth::user()->name }}
+                                        @if (Auth::guard('web')->check())
+                                            Welcome back, {{ Auth::guard('web')->user()->name }}
+                                        @endif
+                                        @if (Auth::guard('guru')->check())
+                                            Welcome back, {{ Auth::guard('guru')->user()->name }}
+                                        @endif
+                                        @if (Auth::guard('admin')->check())
+                                            Welcome back, {{ Auth::guard('admin')->user()->name }}
+                                        @endif
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
@@ -69,22 +77,18 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <form action="/" method="post">
-                                                @csrf
-                                                <button type="submit" name='submit' class="text-center w-100 logoutbtn">
-                                                    <a class="dropdown-item">
-                                                        <i class="bi bi-box-arrow-right"></i>
-                                                        Logout
-                                                    </a>
-                                                </button>
-                                            </form>
+
+                                            <a class="dropdown-item" href="{{ url('/logout') }}">
+                                                <i class="bi bi-box-arrow-right"></i>
+                                                Logout
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         @else
                             <a href="/login" class="btn btn-primary">Login</a>
-                        @endauth
+                        @endif
                     </div>
                 </div>
             </div>

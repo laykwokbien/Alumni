@@ -16,15 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ControllerUser::class, 'index']);
-Route::get('/create/jurusan', [ControllerJurusan::class, 'index']);
-Route::get('/view/alumni', [ControllerAlumni::class, 'index']);
 
-Route::middleware('auth')->group(function () {
-    Route::post('/', [ControllerUser::class, 'logout']);
+Route::middleware('auth:web,admin,guru')->group(function () {
+    Route::get('/', [ControllerUser::class, 'index']);
+    Route::get('/create/jurusan', [ControllerJurusan::class, 'index']);
+    Route::get('/view/alumni', [ControllerAlumni::class, 'index']);
+    // Route::post('/', [ControllerUser::class, 'logout']);
+    Route::get('/logout', [ControllerUser::class, 'logout']);
 });
 
-Route::middleware('auth:admin,teacher')->group(function () {
+Route::middleware('auth:admin,guru')->group(function () {
     Route::post('/create/jurusan', [ControllerJurusan::class, 'create']);
     Route::get('/update/jurusan/{id}', [ControllerJurusan::class, 'view']);
     Route::post('/update/jurusan/{id}', [ControllerJurusan::class, 'update']);
@@ -45,7 +46,7 @@ Route::middleware('auth:admin')->group(function () {
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [ControllerUser::class, 'loginpg']);
+    Route::get('/login', [ControllerUser::class, 'loginpg'])->name('login');
     Route::post('/login', [ControllerUser::class, 'login']);
     Route::get('/register', [ControllerUser::class, 'registerpg']);
     Route::post('/register', [ControllerUser::class, 'register']);

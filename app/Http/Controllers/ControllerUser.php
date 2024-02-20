@@ -25,7 +25,7 @@ class ControllerUser extends Controller
     }
     public function login()
     {
-        if (Auth::guard('user')->attempt(['name' => request()->input('name'), 'password' => request()->input('password')])) {
+        if (Auth::guard('web')->attempt(['name' => request()->input('name'), 'password' => request()->input('password')])) {
             request()->session()->regenerate();
             return redirect()->intended('/');
         }
@@ -37,11 +37,24 @@ class ControllerUser extends Controller
             request()->session()->regenerate();
             return redirect()->intended('/admin/view/user');
         }
+
+        return redirect()->back();
     }
 
     public function logout()
     {
-        Auth::logout();
+        if (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+        };
+
+        if (Auth::guard('guru')->check()) {
+            Auth::guard('guru')->logout();
+        };
+
+        if (Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        };
+
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 

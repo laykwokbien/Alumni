@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'user',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'user' => [
+        'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
@@ -46,7 +46,7 @@ return [
         ],
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'admins',
         ]
     ],
 
@@ -74,11 +74,11 @@ return [
         ],
         'gurus' => [
             'driver' => 'eloquent',
-            'model' => App\Models\teacher::class,
+            'model' => App\Models\Teacher::class,
         ],
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\admin::class,
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [
