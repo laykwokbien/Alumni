@@ -37,25 +37,29 @@
         @endif
     </div>
     <div class="container d-flex flex-row gap-3 mt-5">
-        @auth
-            <form action="" method="POST">
+        @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
+            <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Foto:</label>
+                    <input type="file" name="foto" id="foto" class="form-control" autocomplete="off">
+                </div>
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama: </label>
                     <input type="text" class="form-control" name="nama" autocomplete="off">
                 </div>
                 <button class="btn btn-primary" type="submit" name="submit">Kirim</button>
             </form>
-        @endauth
+        @endif
         <table class="table">
             <thead>
                 <th>#</th>
                 <th>Nama</th>
-                <th>Used</th>
-                <th>Updated</th>
-                @auth
+                <th>Digunakan</th>
+                @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
+                    <th>Updated</th>
                     <th>Aksi</th>
-                @endauth
+                @endif
             </thead>
             <tbody>
                 @foreach ($page['data'] as $row)
@@ -64,12 +68,14 @@
                         <td>{{ $row['nama'] }}</td>
                         <td>{{ count($row->alumnis) }}</td>
                         <td>{{ $row['updated_at'] }}</td>
-                        @auth
+                        @if (Auth::guard('guru')->check() || Auth::guard('admin')->check())
                             <td>
                                 <a href="/update/jurusan/{{ $row->id }}" class="btn btn-primary">Edit</a>
-                                <a href="/delete/jurusan/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                                @if (Auth::guard('admin')->check())
+                                    <a href="/delete/jurusan/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                                @endif
                             </td>
-                        @endauth
+                        @endif
                     </tr>
                 @endforeach
             </tbody>

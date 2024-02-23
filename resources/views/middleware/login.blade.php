@@ -1,15 +1,15 @@
 @extends('template.master')
 
 @section('dashboard')
-    <div class="position-absolute messages d-flex flex-column w-100 align-items-center pe-none">
-        @if (session()->has('success'))
-            <div class="alert alert-success pe-none">
-                {{ session('success') }}
+    <div class="position-absolute messages d-flex flex-column w-100 align-items-center pe-none mt-3">
+        @if (session()->has('messages'))
+            <div class="alert alert-danger pe-none">
+                {{ session('messages') }}
             </div>
         @endif
     </div>
     <div class="container w-25 h-75">
-        <form class="d-flex flex-column gap-3 mt-5" method="POST">
+        <form class="middleware d-flex flex-column gap-3 justify-content-center" method="POST">
             @csrf
             <div class="h3 align-self-center">Login</div>
             <div class="mb-3">

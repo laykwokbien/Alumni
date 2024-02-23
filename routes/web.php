@@ -19,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:web,admin,guru')->group(function () {
     Route::get('/', [ControllerUser::class, 'index']);
+    Route::get('/alumni', [ControllerUser::class, "alumni"]);
+    Route::get('/about', [ControllerUser::class, 'about']);
     Route::get('/create/jurusan', [ControllerJurusan::class, 'index']);
     Route::get('/view/alumni', [ControllerAlumni::class, 'index']);
-    // Route::post('/', [ControllerUser::class, 'logout']);
     Route::get('/logout', [ControllerUser::class, 'logout']);
 });
 

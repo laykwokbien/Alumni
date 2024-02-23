@@ -24,8 +24,12 @@
         @endif
     </div>
     <div class="container d-flex flex-row justify-content-center align-center">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             @csrf
+            <div class="mb-3">
+                <label for="foto" class="form-label">Foto:</label>
+                <input type="file" name="foto" id="foto" class="form-control" autocomplete="off">
+            </div>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama:</label>
                 <input type="text" class="form-control" name="nama" value="{{ $id['nama'] }}">

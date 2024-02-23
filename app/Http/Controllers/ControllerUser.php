@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\alumni;
+use App\Models\jurusan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +15,24 @@ class ControllerUser extends Controller
     {
         $page = array(
             'halaman' => 'home',
+            'jurusan' => jurusan::get(),
         );
         return view('index', compact('page'));
+    }
+    public function alumni()
+    {
+        $page = array(
+            'halaman' => 'alumni',
+            'alumni' => alumni::get(),
+        );
+        return view('alumni', compact('page'));
+    }
+    public function about()
+    {
+        $page = array(
+            'halaman' => 'about',
+        );
+        return view('about', compact('page'));
     }
     public function loginpg()
     {
@@ -38,22 +56,25 @@ class ControllerUser extends Controller
             return redirect()->intended('/admin/view/user');
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('messages', "Nama atau Password Salah!");
     }
 
     public function logout()
     {
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
-        };
+        }
+        ;
 
         if (Auth::guard('guru')->check()) {
             Auth::guard('guru')->logout();
-        };
+        }
+        ;
 
         if (Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
-        };
+        }
+        ;
 
         request()->session()->invalidate();
         request()->session()->regenerateToken();

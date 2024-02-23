@@ -3,12 +3,12 @@
 @section('dashboard')
     <div class="container d-flex flex-column">
         <div class="row mb-5 mt-5">
-            <div class="col-3">
+            <div class="col-6">
                 <h1>Nama:</h1>
                 <h2>{{ $id->nama }}</h2>
             </div>
-            <div class="col-9">
-                <img src="{{ asset('storage/' . $id->foto) }}">
+            <div class="col-6">
+                <img class="profile" src="{{ asset('storage/' . $id->foto) }}" draggable="false">
             </div>
         </div>
         <div class="row">

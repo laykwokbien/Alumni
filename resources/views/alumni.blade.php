@@ -2,6 +2,6 @@
 
 @section('dashboard')
     <div class="container">
-
+        
     </div>
 @endsection

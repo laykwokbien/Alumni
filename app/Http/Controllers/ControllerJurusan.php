@@ -22,8 +22,11 @@ class ControllerJurusan extends Controller
     public function create()
     {
         $validator = Validator::make(request()->all(), [
+            'foto' => 'required|image',
             'nama' => 'required|unique:jurusans',
         ], [
+            'foto.required' => 'Foto Jurusan Harap Diserahkan',
+            'foto.image' => 'File Foto harap dalam bentuk file foto',
             'nama.required' => 'Nama Jurusan Harus Diisi',
             'nama.unique' => 'Nama Jurusan Sudah Ada!',
         ]);
@@ -32,7 +35,10 @@ class ControllerJurusan extends Controller
             return back()->with('fail', $validator->messages()->get('*'));
         }
 
+        request()->file('foto')->store("jurusans");
+
         jurusan::create([
+            'foto' => request()->file('foto')->store("jurusans"),
             'nama' => request()->input('nama'),
         ]);
 
@@ -51,14 +57,24 @@ class ControllerJurusan extends Controller
     {
 
         $validator = Validator::make(request()->all(), [
-            'nama' => 'required|unique:jurusans,nama,' . $id,
+            'foto' => 'image',
+            'nama' => "required|unique:jurusans,nama," . $id,
         ], [
+            'foto.image' => 'File Foto harap dalam bentuk file foto',
             'nama.required' => 'Nama Jurusan Harus Diisi',
             'nama.unique' => 'Nama Jurusan Sudah Ada!',
         ]);
 
         if ($validator->fails()) {
             return back()->with('fail', $validator->messages()->get('*'));
+        }
+
+        if (request()->file("foto") != "") {
+            request()->file('foto')->store("jurusans");
+            jurusan::where('id', $id)->update([
+                'foto' => request()->file('foto')->store('jurusans'),
+                'nama' => request()->input('nama'),
+            ]);
         }
 
         jurusan::where('id', $id)->update([

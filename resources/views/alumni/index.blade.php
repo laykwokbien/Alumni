@@ -34,19 +34,19 @@
     </div>
     </div>
     <div class="container d-flex flex-column align-items-start gap-3">
-        @auth
+        @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <a href="{{ url('/create/alumni') }}" class="btn btn-primary mt-5 mb-3">Create</a>
-        @endauth
+        @endif
         <table class="table">
             <thead>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jurusan</th>
                 <th scope="col">No. Telp</th>
-                <th scope="col">Updated</th>
-                @auth
+                @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
+                    <th scope="col">Updated</th>
                     <th scope="col">Aksi</th>
-                @endauth
+                @endif
             </thead>
             <tbody>
                 @foreach ($page['data'] as $row)
@@ -55,14 +55,16 @@
                         <td>{{ $row->nama }}</td>
                         <td>{{ $row->isjurusan->nama }}</td>
                         <td>{{ $row->tlp }}</td>
-                        <td>{{ $row->updated_at }}</td>
-                        @auth
+                        @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
+                            <td>{{ $row->updated_at }}</td>
                             <td>
                                 <a href="/update/alumni/{{ $row->id }}" class="btn btn-warning">Edit</a>
-                                <a href="/delete/alumni/{{ $row->id }}" class="btn btn-danger">Delete</a>
-                                <a href="/view/alumni/{{ $row->id }}" class="btn btn-primary">More Info</a>
+                                @if (Auth::guard('admin')->check())
+                                    <a href="/delete/alumni/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                                @endif
+                                <a href="/view/alumni/{{ $row->id }}" class="btn btn-primary">Selengkapnya</a>
                             </td>
-                        @endauth
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
