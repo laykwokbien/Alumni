@@ -2,7 +2,7 @@
 
 @section('dashboard')
     <div class="container-fluid hero">
-        <div class="container-fluid content" id="home">
+        <div class="container-fluid content" id="home" data-bool="true">
             <div class="container d-flex flex-column justify-content-center h-75 align-items-center pt-5 gap-5">
                 <img src="{{ asset('assets/images/smkn1bws.png') }}" draggable="false">
                 <h1 class="text-white">SMK Negeri 1 Bondowoso</h1>

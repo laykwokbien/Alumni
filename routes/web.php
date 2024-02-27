@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware('auth:web,admin,guru')->group(function () {
-    Route::get('/', [ControllerUser::class, 'index']);
+Route::get('/', [ControllerUser::class, 'index']);
+Route::get('/about', [ControllerUser::class, 'about']);
+
+Route::middleware('auth:web,admin,guru,alumni')->group(function () {
     Route::get('/alumni', [ControllerUser::class, "alumni"]);
-    Route::get('/about', [ControllerUser::class, 'about']);
     Route::get('/create/jurusan', [ControllerJurusan::class, 'index']);
     Route::get('/view/alumni', [ControllerAlumni::class, 'index']);
     Route::get('/logout', [ControllerUser::class, 'logout']);
@@ -32,6 +33,10 @@ Route::middleware('auth:admin,guru')->group(function () {
     Route::post('/update/jurusan/{id}', [ControllerJurusan::class, 'update']);
     Route::get('/create/alumni', [ControllerAlumni::class, 'gotocreate']);
     Route::post('/create/alumni', [ControllerAlumni::class, 'create']);
+    Route::get('/account/alumni', [ControllerUser::class, 'alumniIndex']);
+});
+
+Route::middleware('auth:admin,guru,alumni')->group(function () {
     Route::get('/update/alumni/{id}', [ControllerAlumni::class, 'view']);
     Route::post('/update/alumni/{id}', [ControllerAlumni::class, 'update']);
     Route::get('/view/alumni/{id}', [ControllerAlumni::class, 'show']);
@@ -42,7 +47,9 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('/delete/jurusan/{id}', [ControllerJurusan::class, 'delete']);
     Route::get('/delete/alumni/{id}', [ControllerAlumni::class, 'confirm']);
     Route::post('/delete/alumni/{id}', [ControllerAlumni::class, 'delete']);
-    Route::get('/admin/view/user', [ControllerUser::class, 'view']);
+    Route::get('/admin/view/user', [ControllerUser::class, 'viewuser']);
+    Route::get('/admin/view/guru', [ControllerUser::class, "viewguru"]);
+    Route::get('/admin/view/alumni', [ControllerUser::class, 'viewalumni']);
 });
 
 

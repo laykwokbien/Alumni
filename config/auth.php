@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'alumni' => [
+            'driver' => 'session',
+            'provider' => 'alumnis',
+        ],
         'guru' => [
             'driver' => 'session',
             'provider' => 'gurus',
@@ -71,6 +75,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'alumnis' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\useralumni::class,
         ],
         'gurus' => [
             'driver' => 'eloquent',

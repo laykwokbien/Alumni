@@ -23,12 +23,14 @@
             </div>
         @endif
     </div>
-    <div class="position-absolute d-flex justify-content-end align-items-end w-100 h-100 pe-none">
-        <a href="{{ url('view/alumni') }}" class="btn pe-auto">Back</a>
+    <div class="position-absolute d-flex justify-content-end align-items-end pe-none" style="width: 95%;height: 85%">
+        <a href="{{ url('view/alumni') }}" class="text-black pe-auto" data-btn="backcreate">
+            <span>&#8678;</span><span>Back</span>
+        </a>
     </div>
-    <form class="container w-75 mt-5" action="" method="POST" enctype="multipart/form-data">
+    <form class="container w-75 mt-1" action="" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="row w-100 gap-5">
+        <div class="row w-100 gap-2 justify-content-center">
             <div class="col-5 d-flex flex-column align-items-center justify-content-center">
                 <div class="mb-3 w-100">
                     <label for="foto" class="form-label">Foto:</label>
@@ -53,8 +55,12 @@
                     </select>
                 </div>
                 <div class="mb-3 w-100">
-                    <label for="ttl" class="form-label">Tanggal Lahir:</label>
-                    <input type="date" name="ttl" id="ttl" class="form-control">
+                    <label for="ttl" class="form-label">Tempat, Tanggal Lahir:</label>
+                    <input type="text" name="ttl" id="ttl" class="form-control">
+                </div>
+                <div class="mb-3 w-100">
+                    <label for="alamat" class="form-label">Alamat:</label>
+                    <input type="text" name="alamat" id="alamat" class="form-control">
                 </div>
                 <div class="mb-3 w-100">
                     <label for="tlp" class="form-label">No. Telp:</label>
@@ -85,7 +91,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Kirim</button>
+            <button type="submit" class="btn btn-primary w-25">Kirim</button>
         </div>
     </form>
 @endsection

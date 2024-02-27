@@ -15,4 +15,8 @@ class alumni extends Model
     {
         return $this->belongsTo(jurusan::class, "jurusan");
     }
+    public function isAccount()
+    {
+        return $this->hasOne(useralumni::class, 'isData');
+    }
 }

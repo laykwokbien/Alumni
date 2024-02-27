@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->integer('nisn')->unique();
             $table->foreignId('jurusan')->references('id')->on('jurusans');
             $table->string('ttl');
+            $table->string('alamat');
             $table->bigInteger('tlp');
             $table->string('instagram')->nullable();
             $table->string('twitter')->nullable();

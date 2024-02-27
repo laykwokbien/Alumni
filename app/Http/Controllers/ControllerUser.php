@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\alumni;
 use App\Models\jurusan;
+use App\Models\Teacher;
 use App\Models\User;
+use App\Models\useralumni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -92,8 +94,8 @@ class ControllerUser extends Controller
     public function register()
     {
         $validator = Validator::make(request()->all(), [
-            'email' => 'required|unique:users',
-            'name' => 'required|unique:users',
+            'email' => 'required|unique:users|unique:teachers|unique:admins|unique:useralumnis',
+            'name' => 'required|unique:users|unique:teachers|unique:admins|unique:useralumnis',
             'password' => 'required',
         ], [
             'email.required' => 'Email mohon diisi',
@@ -116,7 +118,7 @@ class ControllerUser extends Controller
         return redirect('/login')->with('success', 'Akun berhasil untuk dibuat');
     }
 
-    public function view()
+    public function viewuser()
     {
         $page = array(
             'halaman' => 'admin',
@@ -124,5 +126,50 @@ class ControllerUser extends Controller
         );
 
         return view('user.index', compact('page'));
+    }
+    public function viewguru()
+    {
+        $page = array(
+            'halaman' => 'admin',
+            'data' => Teacher::get(),
+        );
+
+        return view('user.index', compact('page'));
+    }
+    public function viewalumni()
+    {
+        $page = array(
+            'halaman' => 'viewalumni',
+            'data' => useralumni::get(),
+        );
+
+        return view('user.index', compact('page'));
+    }
+
+    public function alumniIndex()
+    {
+        $page = array(
+            'halaman' => 'createalumni',
+            'data' => alumni::get(),
+        );
+
+        return view('alumni.account', compact('page'));
+    }
+    public function AlumniCreate()
+    {
+        $validator = Validator::make(request()->all(), [
+            'email' => 'required|unique:users,email|unique:teachers,email|unique:admins,email|unique:useralumnis,email',
+            'name' => 'required|unique:users,name|unique:teachers,name|unique:admins,name|unique:useralumnis,username',
+            'nisn' => 'required|unique:alumnis, id',
+            'password' => 'required',
+        ], [
+            'email.required' => 'Email Alumni Harap Diisi',
+            'email.unique' => 'Email ini sudah digunakan',
+            'name.required' => 'Nama Alumni harap diisi',
+            'name.unique' => 'Username ini sudah digunakan',
+            'nisn.required' => 'NISN harap diisi',
+            'nisn.unique' => 'NISN ini sudah digunakan oleh Alumni lain',
+            'password.required' => 'Password Harap diisi'
+        ]);
     }
 }

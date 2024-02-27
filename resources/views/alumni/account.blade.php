@@ -12,10 +12,10 @@
             @endforeach
         @endif
     </div>
-    <div class="container w-25">
-        <form class="middleware d-flex flex-column gap-3 mt-5" method="POST">
+    <div class="d-flex flex-column align-items-center mt-5">
+        <form action="" method="post" class="w-25 d-flex flex-column">
             @csrf
-            <div class="h3 align-self-center">Register</div>
+
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
                 <input type="email" name="email" id="email" class="form-control" autocomplete="off">
@@ -25,14 +25,20 @@
                 <input type="text" class="form-control" name="name" autocomplete="off">
             </div>
             <div class="mb-3">
+                <label for="nisn">NISN</label>
+                <select name="nisn" id="nisn" class="form-control">
+                    @foreach ($page['data'] as $item)
+                        <option value="{{ $item->id }}">{{ $item->nisn }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="password" class="form-label">Password:</label>
                 <input type="password" class="form-control" name="password" id="password" autocomplete="off">
                 <input class="form-check-input" type="checkbox" name="check" id="check">
                 <label for="check" class="form-check-label">Show Password</label>
             </div>
-            <button class="btn btn-primary" type="submit" name="submit">Register Sekarang</button>
-            <hr>
-            <p class="align-self-center">Sudah Punya Akun? <a href="/login">Login</a></p>
+            <button class="btn btn-primary" type="submit" name="submit">Register</button>
         </form>
     </div>
 @endsection

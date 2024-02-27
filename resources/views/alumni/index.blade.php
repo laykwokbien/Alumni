@@ -40,6 +40,7 @@
         <table class="table">
             <thead>
                 <th scope="col">#</th>
+                <th scope="col">NISN</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jurusan</th>
                 <th scope="col">No. Telp</th>
@@ -52,6 +53,7 @@
                 @foreach ($page['data'] as $row)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $row->nisn }}</td>
                         <td>{{ $row->nama }}</td>
                         <td>{{ $row->isjurusan->nama }}</td>
                         <td>{{ $row->tlp }}</td>

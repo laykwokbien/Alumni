@@ -1,22 +1,28 @@
 @extends('template.master')
 
 @section('dashboard')
-    <table class="table">
-        <thead>
-            <th>#</th>
-            <th>Name</th>
-            <th>Password</th>
-            <th>Updated</th>
-        </thead>
-        <tbody>
-            @foreach ($page['data'] as $row)
-            <tr>
-                <td>{{ $row->id }}</td>
-                <td>{{ $row->name }}</td>
-                <td>{{ $row->password }}</td>
-                <td>{{ $row->updated_at }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="d-flex justify-content-center">
+        <table class="table w-75">
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Updated</th>
+            </thead>
+            <tbody>
+                @foreach ($page['data'] as $row)
+                    <tr>
+                        <td>{{ $row->id }}</td>
+                        @if ($page['data'] != 'viewalumni')
+                            <td>{{ $row->name }}</td>
+                        @else
+                            <td>{{ $row->username }}</td>
+                        @endif
+                        <td>{{ $row->email }}</td>
+                        <td>{{ $row->updated_at }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection

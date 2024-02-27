@@ -234,11 +234,51 @@ hr {
 }
 /* End of Hero */
 .profile {
-    object-fit: cover;
+    object-fit: scale-down;
     object-position: center;
     width: 230px;
     height: 350px;
-    border: solid black 1px;
+}
+
+a[data-btn="backmore"] {
+    text-align: end;
+    width: 10%;
+    text-decoration: none;
+    color: var(--third-color);
+}
+
+a[data-btn="backmore"] span:nth-child(1) {
+    font-size: 18px;
+    margin-right: 5px;
+    transition: 0.3s ease-out;
+}
+
+a[data-btn="backmore"]:hover span:nth-child(1) {
+    margin-right: 10px;
+    transition: 0.3s ease-in;
+}
+
+a[data-btn="backcreate"] {
+    text-align: end;
+    text-decoration: none;
+    color: var(--third-color);
+}
+
+a[data-btn="backcreate"] span:nth-child(1) {
+    font-size: 18px;
+    margin-right: 5px;
+    transition: 0.3s ease-out;
+}
+a[data-btn="backcreate"]:hover span:nth-child(1) {
+    margin-right: 10px;
+    transition: 0.3s ease-in;
+}
+
+.info {
+    padding-top: 1rem;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    margin-bottom: 1rem;
 }
 
 .show {
