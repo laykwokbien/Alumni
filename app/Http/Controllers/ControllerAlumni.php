@@ -101,7 +101,7 @@ class ControllerAlumni extends Controller
         $id = alumni::find($id);
         $page = array(
             'halaman' => 'update',
-            'data' => jurusan::get(),
+            'jurusan' => jurusan::get(),
         );
         return view('alumni.update', compact('page', 'id'));
     }
@@ -109,16 +109,15 @@ class ControllerAlumni extends Controller
     public function update($id)
     {
         $validator = Validator::make(request()->all(), [
-            'foto' => 'required|image',
-            'nama' => 'required|unique:alumnis',
-            'nisn' => 'required|numeric|unique:alumnis|digits:10',
+            'foto' => 'image',
+            'nama' => "required|unique:alumnis,nama,$id",
+            'nisn' => "required|numeric|unique:alumnis,nisn,$id|digits:10",
             'jurusan' => 'required',
             'ttl' => 'required',
-            'tlp' => 'required|unique:alumnis|digits:12',
+            'tlp' => "required|unique:alumnis,tlp,$id|digits:12",
             'tahun_lulus' => 'required',
             'setelah_lulus' => 'required',
         ], [
-            'foto.required' => 'foto harap diisi',
             'foto.image' => 'Harap diisi file yang berupa gambar',
             'nama.required' => 'Nama Alumni harus diisi',
             'nama.unique' => 'Nama Alumni sudah terdaftar',
@@ -139,16 +138,34 @@ class ControllerAlumni extends Controller
             return back()->with('fail', $validator->messages()->get('*'));
         }
 
-        request()->file('foto')->store('alumnis');
+        if (request()->file('foto') != '') {
+            request()->file('foto')->store('alumnis');
+            alumni::where('id', $id)->update([
+                'foto' => request()->file('foto')->store('alumnis'),
+                'nama' => request()->input('nama'),
+                'nisn' => request()->input('nisn'),
+                'jurusan' => request()->input('jurusan'),
+                'ttl' => request()->input('ttl'),
+                'tlp' => request()->input('tlp'),
+                'alamat' => request()->input('alamat'),
+                'instagram' => request()->input('instagram'),
+                'facebook' => request()->input('facebook'),
+                'twitter' => request()->input('twitter'),
+                'tahun_lulus' => request()->input('tahun_lulus'),
+                'setelah_lulus' => request()->input('setelah_lulus'),
+            ]);
+        }
 
-        alumni::where('id')->update([
-            'foto' => request()->file('foto')->store('alumnis'),
+        alumni::where('id', $id)->update([
             'nama' => request()->input('nama'),
             'nisn' => request()->input('nisn'),
             'jurusan' => request()->input('jurusan'),
             'ttl' => request()->input('ttl'),
             'tlp' => request()->input('tlp'),
-            'socialmedia' => request()->input('socialmedia'),
+            'alamat' => request()->input('alamat'),
+            'instagram' => request()->input('instagram'),
+            'facebook' => request()->input('facebook'),
+            'twitter' => request()->input('twitter'),
             'tahun_lulus' => request()->input('tahun_lulus'),
             'setelah_lulus' => request()->input('setelah_lulus'),
         ]);
@@ -167,7 +184,7 @@ class ControllerAlumni extends Controller
     }
     public function delete($id)
     {
-        alumni::where()->delete();
+        alumni::where('id', $id)->delete();
 
         return redirect('/view/alumni')->with('success', 'Record berhasil untuk dihapus');
     }

@@ -28,7 +28,10 @@
                     <a href="{{ url('/') }}"
                         class="nav-link @if ($page['halaman'] == 'home') {{ 'text-primary' }} @endif">Home</a>
                 </div>
-                @if (Auth::guard('web')->check() || Auth::guard('guru')->check() || Auth::guard('admin')->check())
+                @if (Auth::guard('web')->check() ||
+                        Auth::guard('guru')->check() ||
+                        Auth::guard('admin')->check() ||
+                        Auth::guard('alumni')->check())
                     <div class="nav-item">
                         <a href="{{ url('/alumni') }}"
                             class="nav-link @if ($page['halaman'] == 'alumni') {{ 'text-primary' }} @endif">Alumni</a>
@@ -38,7 +41,10 @@
                     <a href="{{ url('/about') }}"
                         class="nav-link @if ($page['halaman'] == 'about') {{ 'text-primary' }} @endif">Tentang</a>
                 </div>
-                @if (Auth::guard('web')->check() || Auth::guard('guru')->check() || Auth::guard('admin')->check())
+                @if (Auth::guard('web')->check() ||
+                        Auth::guard('guru')->check() ||
+                        Auth::guard('admin')->check() ||
+                        Auth::guard('alumni')->check())
                     <div class="nav-item dropdown @if ($page['halaman'] == 'home') {{ 'transparent' }} @endif">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown"aria-expanded="false">
@@ -51,13 +57,11 @@
                             @if (Auth::guard('admin')->check())
                                 Welcome back, {{ Auth::guard('admin')->user()->name }}
                             @endif
+                            @if (Auth::guard('alumni')->check())
+                                Welcome back, {{ Auth::guard('alumni')->user()->username }}
+                            @endif
                         </a>
                         <ul class="dropdown-menu">
-                            <hr>
-                            <li>
-                                <p class="text-white text-center mt-3">User</p>
-                            </li>
-                            <hr>
                             <li>
                                 <div class="d-flex text-center w-100">
                                     <a class="dropdown-item w-100" href="">
@@ -85,9 +89,15 @@
                             <li>
                                 <a class="dropdown-item" href="{{ url('/view/alumni') }}">Data Alumni</a>
                             </li>
-                            @if (Auth::guard('guru')->check() || Auth::guard('admin')->check())
+                            @if (Auth::guard('admin')->check())
                                 <li>
-                                    <a class="dropdown-item" href="{{ url('/account/alumni') }}">Akun Alumni</a>
+                                    <a class="dropdown-item" href="{{ url('/admin/view/user') }}">Check User</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ url('/admin/view/alumni') }}">Check Alumni</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ url('/admin/view/guru') }}">Check guru</a>
                                 </li>
                             @endif
                         </ul>

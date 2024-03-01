@@ -33,7 +33,6 @@ Route::middleware('auth:admin,guru')->group(function () {
     Route::post('/update/jurusan/{id}', [ControllerJurusan::class, 'update']);
     Route::get('/create/alumni', [ControllerAlumni::class, 'gotocreate']);
     Route::post('/create/alumni', [ControllerAlumni::class, 'create']);
-    Route::get('/account/alumni', [ControllerUser::class, 'alumniIndex']);
 });
 
 Route::middleware('auth:admin,guru,alumni')->group(function () {
@@ -58,4 +57,9 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [ControllerUser::class, 'login']);
     Route::get('/register', [ControllerUser::class, 'registerpg']);
     Route::post('/register', [ControllerUser::class, 'register']);
+    Route::get('/confirm/alumni', [ControllerUser::class, 'ConfirmPage']);
+    Route::post('/confirm/alumni', [ControllerUser::class, 'ConfirmAlumni']);
+    Route::get('/register/alumni', [ControllerUser::class, 'alumniIndex']);
+    Route::post('/register/alumni', [ControllerUser::class, 'AlumniCreate']);
+    Route::get('/return', [ControllerUser::class, 'return']);
 });

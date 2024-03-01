@@ -5,20 +5,20 @@
         @if (session()->has('fail'))
             @foreach (session('fail') as $col)
                 @foreach ($col as $messages)
-                    <div class="alert alert-danger pe-none">
+                    <div class="alert alert-danger">
                         {{ $messages }}
                     </div>
                 @endforeach
             @endforeach
         @else
             @if (session()->has('success'))
-                <div class="alert alert-success pe-none">
+                <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
             @endif
         @endif
         @if (session()->has('messages'))
-            <div class="alert alert-danger pe-none">
+            <div class="alert alert-danger">
                 {{ session('messages') }}
             </div>
         @endif
@@ -36,7 +36,7 @@
             </container>
         @endif
     </div>
-    <div class="container d-flex flex-row gap-3">
+    <div class="container d-flex flex-column flex-lg-row gap-3">
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -51,34 +51,36 @@
                 <button class="btn btn-primary" type="submit" name="submit">Kirim</button>
             </form>
         @endif
-        <table class="table">
-            <thead>
-                <th>#</th>
-                <th>Nama</th>
-                <th>Digunakan</th>
-                @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
-                    <th>Updated</th>
-                    <th>Aksi</th>
-                @endif
-            </thead>
-            <tbody>
-                @foreach ($page['data'] as $row)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $row['nama'] }}</td>
-                        <td>{{ count($row->alumnis) }}</td>
-                        <td>{{ $row['updated_at'] }}</td>
-                        @if (Auth::guard('guru')->check() || Auth::guard('admin')->check())
-                            <td>
-                                <a href="/update/jurusan/{{ $row->id }}" class="btn btn-primary">Edit</a>
-                                @if (Auth::guard('admin')->check())
-                                    <a href="/delete/jurusan/{{ $row->id }}" class="btn btn-danger">Delete</a>
-                                @endif
-                            </td>
-                        @endif
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="table-respon">
+            <table class="table table-hover">
+                <thead>
+                    <th>#</th>
+                    <th>Nama</th>
+                    <th>Digunakan</th>
+                    @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
+                        <th>Updated</th>
+                        <th>Aksi</th>
+                    @endif
+                </thead>
+                <tbody>
+                    @foreach ($page['data'] as $row)
+                        <tr>
+                            <td class="vw-100">{{ $loop->iteration }}</td>
+                            <td class="vw-100">{{ $row['nama'] }}</td>
+                            <td class="vw-100">{{ count($row->alumnis) }}</td>
+                            <td class="vw-100">{{ $row['updated_at'] }}</td>
+                            @if (Auth::guard('guru')->check() || Auth::guard('admin')->check())
+                                <td class="vw-100">
+                                    <a href="/update/jurusan/{{ $row->id }}" class="btn btn-primary">Edit</a>
+                                    @if (Auth::guard('admin')->check())
+                                        <a href="/delete/jurusan/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                                    @endif
+                                </td>
+                            @endif
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection

@@ -37,39 +37,52 @@
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <a href="{{ url('/create/alumni') }}" class="btn btn-primary mt-5 mb-3">Create</a>
         @endif
-        <table class="table">
-            <thead>
-                <th scope="col">#</th>
-                <th scope="col">NISN</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Jurusan</th>
-                <th scope="col">No. Telp</th>
-                @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
-                    <th scope="col">Updated</th>
-                    <th scope="col">Aksi</th>
-                @endif
-            </thead>
-            <tbody>
-                @foreach ($page['data'] as $row)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $row->nisn }}</td>
-                        <td>{{ $row->nama }}</td>
-                        <td>{{ $row->isjurusan->nama }}</td>
-                        <td>{{ $row->tlp }}</td>
-                        @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
-                            <td>{{ $row->updated_at }}</td>
-                            <td>
-                                <a href="/update/alumni/{{ $row->id }}" class="btn btn-warning">Edit</a>
-                                @if (Auth::guard('admin')->check())
-                                    <a href="/delete/alumni/{{ $row->id }}" class="btn btn-danger">Delete</a>
-                                @endif
-                                <a href="/view/alumni/{{ $row->id }}" class="btn btn-primary">Selengkapnya</a>
-                            </td>
-                        @endif
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="table-respon">
+            <table class="table">
+                <thead>
+                    <th scope="col">#</th>
+                    @if (Auth::guard('admin')->check() || Auth::guard('guru')->check() || Auth::guard('alumni')->check())
+                        <th scope="col">NISN</th>
+                    @endif
+                    <th scope="col">Nama</th>
+                    <th scope="col">Jurusan</th>
+                    <th scope="col">No. Telp</th>
+                    @if (Auth::guard('admin')->check() || Auth::guard('guru')->check() || Auth::guard('alumni')->check())
+                        <th scope="col">Updated</th>
+                        <th scope="col">Aksi</th>
+                    @endif
+                </thead>
+                <tbody>
+                    @foreach ($page['data'] as $row)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            @if (Auth::guard('admin')->check() || Auth::guard('guru')->check() || Auth::guard('alumni')->check())
+                                <td>{{ $row->nisn }}</td>
+                            @endif
+                            <td>{{ $row->nama }}</td>
+                            <td>{{ $row->isjurusan->nama }}</td>
+                            <td>{{ $row->tlp }}</td>
+                            @if (Auth::guard('admin')->check() || Auth::guard('guru')->check() || Auth::guard('alumni')->check())
+                                <td>{{ $row->updated_at }}</td>
+                                <td>
+                                    <a href="/view/alumni/{{ $row->id }}" class="btn btn-primary">Selengkapnya</a>
+                                    @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
+                                        <a href="/update/alumni/{{ $row->id }}" class="btn btn-warning">Edit</a>
+                                    @endif
+                                    @if (Auth::guard('alumni')->check())
+                                        @if ($row->id == Auth::guard('alumni')->user()->nisn)
+                                            <a href="/update/alumni/{{ $row->id }}" class="btn btn-warning">Edit</a>
+                                        @endif
+                                    @endif
+                                    @if (Auth::guard('admin')->check())
+                                        <a href="/delete/alumni/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                                    @endif
+                                </td>
+                            @endif
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection

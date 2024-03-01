@@ -13,10 +13,12 @@
                 @foreach ($page['data'] as $row)
                     <tr>
                         <td>{{ $row->id }}</td>
-                        @if ($page['data'] != 'viewalumni')
-                            <td>{{ $row->name }}</td>
-                        @else
+                        @if ($page['halaman'] == 'viewalumni')
+                            <td>{{ $row->isData->nisn }}</td>
                             <td>{{ $row->username }}</td>
+                        @endif
+                        @if ($page['halaman'] == 'admin')
+                            <td>{{ $row->name }}</td>
                         @endif
                         <td>{{ $row->email }}</td>
                         <td>{{ $row->updated_at }}</td>

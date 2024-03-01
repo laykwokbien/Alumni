@@ -51,11 +51,15 @@ class ControllerUser extends Controller
         }
         if (Auth::guard('guru')->attempt(['name' => request()->input('name'), 'password' => request()->input('password')])) {
             request()->session()->regenerate();
-            return redirect()->intended('/create/alumni');
+            return redirect()->intended('/view/alumni');
         }
         if (Auth::guard('admin')->attempt(['name' => request()->input('name'), 'password' => request()->input('password')])) {
             request()->session()->regenerate();
             return redirect()->intended('/admin/view/user');
+        }
+        if (Auth::guard('alumni')->attempt(['username' => request()->input('name'), 'password' => request()->input('password')])) {
+            request()->session()->regenerate();
+            return redirect()->intended('/view/alumni');
         }
 
         return redirect()->back()->with('messages', "Nama atau Password Salah!");
@@ -77,6 +81,9 @@ class ControllerUser extends Controller
             Auth::guard('admin')->logout();
         }
         ;
+        if (Auth::guard('alumni')->check()) {
+            Auth::guard('alumni')->logout();
+        }
 
         request()->session()->invalidate();
         request()->session()->regenerateToken();
@@ -94,8 +101,8 @@ class ControllerUser extends Controller
     public function register()
     {
         $validator = Validator::make(request()->all(), [
-            'email' => 'required|unique:users|unique:teachers|unique:admins|unique:useralumnis',
-            'name' => 'required|unique:users|unique:teachers|unique:admins|unique:useralumnis',
+            'email' => 'required|unique:users,name|unique:teachers,name|unique:admins,name|unique:useralumnis,username',
+            'name' => 'required|unique:users,name|unique:teachers,name|unique:admins,name|unique:useralumnis,username',
             'password' => 'required',
         ], [
             'email.required' => 'Email mohon diisi',
@@ -140,27 +147,78 @@ class ControllerUser extends Controller
     {
         $page = array(
             'halaman' => 'viewalumni',
-            'data' => useralumni::get(),
+            'data' => useralumni::with('isData')->get(),
         );
 
         return view('user.index', compact('page'));
     }
-
-    public function alumniIndex()
+    public function ConfirmPage()
     {
-        $page = array(
-            'halaman' => 'createalumni',
-            'data' => alumni::get(),
-        );
-
+        if (request()->session()->get('alumni') != null) {
+            return redirect('/register/alumni');
+        } else {
+            $page = array(
+                'halaman' => false,
+                'data' => alumni::get(),
+            );
+        }
         return view('alumni.account', compact('page'));
     }
+    public function ConfirmAlumni()
+    {
+        $useralumni = useralumni::with('isData')->get();
+        foreach ($useralumni as $data) {
+            if ($data->isData->nisn == request()->input('nisntemp')) {
+                return redirect('/login')->with('messages', 'NISN ini telah digunakan oleh Alumni Lain');
+            }
+        }
+        if (request()->input('nisntemp') === null) {
+            return back()->with('messages', 'Mohon isi NISN dengan benar');
+        }
+
+        $data = alumni::get();
+        foreach ($data as $item) {
+            if ($item->nisn == request()->input('nisntemp')) {
+                $info = array(
+                    'id' => $item->id,
+                    'nisn' => $item->nisn,
+                    'alumni' => true
+                );
+                request()->session()->put('alumni', $info);
+                return redirect('/register/alumni');
+            }
+        }
+        return redirect('/login')->with('messages', 'Kamu bukan alumni dari sekolah ini!');
+    }
+    public function alumniIndex()
+    {
+        if (request()->session()->get('alumni') != null) {
+            $data = request()->session()->get('alumni');
+            if ($data['alumni'] == true) {
+                $page = array(
+                    'halaman' => $data['alumni'],
+                    'data' => alumni::get(),
+                );
+                return view('alumni.account', compact(['page', 'data']));
+            }
+        } else {
+            abort(403);
+        }
+    }
+
+    public function return()
+    {
+        request()->session()->flush();
+
+        return redirect('/login');
+    }
+
     public function AlumniCreate()
     {
         $validator = Validator::make(request()->all(), [
             'email' => 'required|unique:users,email|unique:teachers,email|unique:admins,email|unique:useralumnis,email',
             'name' => 'required|unique:users,name|unique:teachers,name|unique:admins,name|unique:useralumnis,username',
-            'nisn' => 'required|unique:alumnis, id',
+            'nisn' => 'required|unique:useralumnis,nisn',
             'password' => 'required',
         ], [
             'email.required' => 'Email Alumni Harap Diisi',
@@ -171,5 +229,18 @@ class ControllerUser extends Controller
             'nisn.unique' => 'NISN ini sudah digunakan oleh Alumni lain',
             'password.required' => 'Password Harap diisi'
         ]);
+
+        if ($validator->fails()) {
+            return back()->with('fail', $validator->messages()->get('*'));
+        }
+
+        useralumni::create([
+            'nisn' => request()->input('nisn'),
+            'email' => request()->input('email'),
+            'username' => request()->input('name'),
+            'password' => bcrypt(request()->input('password')),
+        ]);
+
+        return redirect('/login')->with('success', 'Akun berhasil untuk dibuat');
     }
 }

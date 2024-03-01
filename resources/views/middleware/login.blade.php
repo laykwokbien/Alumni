@@ -25,6 +25,9 @@
             <button class="btn btn-primary" type="submit" name="submit">Login Sekarang</button>
             <hr>
             <p class="align-self-center">Masih belum daftar? <a href="/register">Daftar Sekarang</a></p>
+            <p class="align-self-center">Apakah Kamu Alumni? <a
+                    href="@if (request()->session()->get('alumni') != null) {{ url('/register/alumni') }} @else {{ url('/confirm/alumni') }} @endif">Daftar
+                    Disini</a></p>
         </form>
     </div>
 @endsection

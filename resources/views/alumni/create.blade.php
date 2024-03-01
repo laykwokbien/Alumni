@@ -34,16 +34,17 @@
             <div class="col-5 d-flex flex-column align-items-center justify-content-center">
                 <div class="mb-3 w-100">
                     <label for="foto" class="form-label">Foto:</label>
-                    <input type="file" name="foto" id="foto" class="form-control" autocomplete="off">
+                    <input autocomplete="off" type="file" name="foto" id="foto" class="form-control"
+                        autocomplete="off">
                 </div>
                 <div class="mb-3 w-100">
                     <label for="nama" class="form-label">Nama: </label>
-                    <input type="text" class="form-control" autocomplete="off" name="nama">
+                    <input autocomplete="off" type="text" class="form-control" autocomplete="off" name="nama">
                 </div>
                 <div class="mb-3 w-100">
                     <label for="nisn" class="form-label">NISN: </label>
-                    <input type="number" name="nisn" id="nisn" minlength="10" maxlength="10" class="form-control"
-                        autocomplete="off">
+                    <input autocomplete="off" type="number" name="nisn" id="nisn" minlength="10" maxlength="10"
+                        class="form-control" autocomplete="off">
                 </div>
                 <div class="mb-3 w-100">
                     <label for="jurusan" class="form-label">Jurusan:</label>
@@ -56,30 +57,32 @@
                 </div>
                 <div class="mb-3 w-100">
                     <label for="ttl" class="form-label">Tempat, Tanggal Lahir:</label>
-                    <input type="text" name="ttl" id="ttl" class="form-control">
+                    <input autocomplete="off" type="text" name="ttl" id="ttl" class="form-control">
                 </div>
                 <div class="mb-3 w-100">
                     <label for="alamat" class="form-label">Alamat:</label>
-                    <input type="text" name="alamat" id="alamat" class="form-control">
+                    <input autocomplete="off" type="text" name="alamat" id="alamat" class="form-control">
                 </div>
                 <div class="mb-3 w-100">
                     <label for="tlp" class="form-label">No. Telp:</label>
-                    <input type="number" name="tlp" id="tlp" class="form-control" autocomplete="off">
+                    <input autocomplete="off" type="number" name="tlp" id="tlp" class="form-control"
+                        autocomplete="off">
                 </div>
             </div>
             <div class="col-5 d-flex flex-column align-items-center justify-content-center">
                 <div class="mb-3 w-100 border border-secondary p-3">
                     <p>Dapat dikosongkan</p>
                     <label for="instagram" class="form-label">Instagram</label>
-                    <input type="text" class="form-control" autocomplete="off" name="instagram">
+                    <input autocomplete="off" type="text" class="form-control" autocomplete="off" name="instagram">
                     <label for="facebook" class="form-label">Facebook</label>
-                    <input type="text" class="form-control" autocomplete="off" name="facebook">
+                    <input autocomplete="off" type="text" class="form-control" autocomplete="off" name="facebook">
                     <label for="twitter" class="form-label">Twitter</label>
-                    <input type="text" class="form-control" autocomplete="off" name="twitter">
+                    <input autocomplete="off" type="text" class="form-control" autocomplete="off" name="twitter">
                 </div>
                 <div class="mb-3 w-100">
                     <label for="tahun_lulus" class="form-label">Tahun Lulus:</label>
-                    <input type="number" name="tahun_lulus" id="tahun_lulus" class="form-control" autocomplete="off">
+                    <input autocomplete="off" type="number" name="tahun_lulus" id="tahun_lulus" class="form-control"
+                        autocomplete="off">
                 </div>
                 <div class="mb-3 w-100">
                     <label for="setelah_lulus" class="form-label">Setelah Lulus:</label>
