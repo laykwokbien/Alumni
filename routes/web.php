@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControllerAlumni;
+use App\Http\Controllers\ControllerBerita;
 use App\Http\Controllers\ControllerJurusan;
 use App\Http\Controllers\ControllerUser;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [ControllerUser::class, 'index']);
+Route::get('/berita', [ControllerBerita::class, 'index']);
 Route::get('/about', [ControllerUser::class, 'about']);
 
 Route::middleware('auth:web,admin,guru,alumni')->group(function () {
@@ -28,6 +30,10 @@ Route::middleware('auth:web,admin,guru,alumni')->group(function () {
 });
 
 Route::middleware('auth:admin,guru')->group(function () {
+    Route::get('/create/berita', [ControllerBerita::class, 'gotoCreate']);
+    Route::post('/create/berita', [ControllerBerita::class, 'create']);
+    Route::get('/update/berita/{id}', [ControllerBerita::class, 'gotoUpdate']);
+    Route::post('/update/berita/{id}', [ControllerBerita::class, 'update']);
     Route::post('/create/jurusan', [ControllerJurusan::class, 'create']);
     Route::get('/update/jurusan/{id}', [ControllerJurusan::class, 'view']);
     Route::post('/update/jurusan/{id}', [ControllerJurusan::class, 'update']);
@@ -42,6 +48,8 @@ Route::middleware('auth:admin,guru,alumni')->group(function () {
 });
 
 Route::middleware('auth:admin')->group(function () {
+    Route::get('/create/berita/{id}', [ControllerBerita::class, 'confirm']);
+    Route::post('/delete/berita/{id}', [ControllerBerita::class, 'delete']);
     Route::get('/delete/jurusan/{id}', [ControllerJurusan::class, 'confirm']);
     Route::post('/delete/jurusan/{id}', [ControllerJurusan::class, 'delete']);
     Route::get('/delete/alumni/{id}', [ControllerAlumni::class, 'confirm']);

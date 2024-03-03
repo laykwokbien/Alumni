@@ -2,6 +2,8 @@ const alert = document.querySelectorAll('.alert'),
 burger = document.querySelector('.burger'),
 navbar = document.getElementById('Nav-Bar'),
 home = document.getElementById('home'),
+alumni = document.getElementById('alumni'),
+about = document.getElementById('about'),
 header = document.querySelector('header');
 
 // Responsive Nav
@@ -32,14 +34,13 @@ if(password != undefined || check != undefined){
 }
 
 // windows
-if(home != undefined){
-    if(home.getAttribute('data-bool')){
-        window.addEventListener('scroll', () => {
-            if(window.scrollY >= 100){
-                header.classList.remove('transparent')
-            } else {
-                header.classList.add('transparent')
-            }
-        })
-    }
+console.log(home != undefined || about != undefined || alumni != undefined)
+if(home != undefined || about != undefined || alumni != undefined){
+    window.addEventListener('scroll', () => {
+        if(window.scrollY >= 100){
+            header.classList.remove('transparent')
+        } else {
+            header.classList.add('transparent')
+        }
+    })
 }

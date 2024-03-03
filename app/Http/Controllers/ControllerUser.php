@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\alumni;
+use App\Models\berita;
 use App\Models\jurusan;
 use App\Models\Teacher;
 use App\Models\User;
@@ -17,6 +18,7 @@ class ControllerUser extends Controller
     {
         $page = array(
             'halaman' => 'home',
+            'berita' => berita::get(),
             'jurusan' => jurusan::get(),
         );
         return view('index', compact('page'));
@@ -25,9 +27,12 @@ class ControllerUser extends Controller
     {
         $page = array(
             'halaman' => 'alumni',
-            'alumni' => alumni::get(),
+            'alumni' => alumni::latest()->filter(request(['search']))->get(),
         );
         return view('alumni', compact('page'));
+    }
+    public function search()
+    {
     }
     public function about()
     {
@@ -69,18 +74,15 @@ class ControllerUser extends Controller
     {
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
-        }
-        ;
+        };
 
         if (Auth::guard('guru')->check()) {
             Auth::guard('guru')->logout();
-        }
-        ;
+        };
 
         if (Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
-        }
-        ;
+        };
         if (Auth::guard('alumni')->check()) {
             Auth::guard('alumni')->logout();
         }

@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
 </head>
 
 <body>
     <header
-        class="@if ($page['halaman'] == 'home') {{ 'position-fixed' }} @endif position-relative container-fluid @if ($page['halaman'] == 'home') {{ 'transparent' }} @endif">
+        class="@if ($page['halaman'] == 'home' || $page['halaman'] == 'alumni' || $page['halaman'] == 'about') {{ 'position-fixed transparent' }} @endif position-relative container-fluid">
         <nav class="navbar navbar-expand-md container d-flex flex-row justify-content-between align-items-center">
             <a href="/" class="navbar-brand nav-logo d-flex align-items-center">
                 <img height="70px" src="{{ asset('assets/images/smkn1bws.png') }}" draggable="false">
@@ -37,6 +38,10 @@
                             class="nav-link @if ($page['halaman'] == 'alumni') {{ 'text-primary' }} @endif">Alumni</a>
                     </div>
                 @endif
+                <div class="nav-item">
+                    <a href="{{ url('/berita') }}"
+                        class="nav-link @if ($page['halaman'] == 'berita') {{ 'text-primary' }} @endif">Berita</a>
+                </div>
                 <div class="nav-item">
                     <a href="{{ url('/about') }}"
                         class="nav-link @if ($page['halaman'] == 'about') {{ 'text-primary' }} @endif">Tentang</a>

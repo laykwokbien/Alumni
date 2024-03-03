@@ -278,7 +278,52 @@ hr {
 }
 /* End of Hero */
 /* Alumni Start */
-
+#alumni{
+    background-image: url(../images/background-alumni.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+#alumni h1{
+    backdrop-filter: blur(5px);
+    text-shadow: 5px 5px 4px black;
+    background-image: linear-gradient(180deg, transparent, #fefefe 80%);
+}
+.search{
+    width: 20rem;
+    right: 0;
+    top: -50px;
+    border: 2px solid var(--third-color);
+}
+.search input{
+    width: 100%;
+    border: none;
+    padding: 4px;
+    padding-left: 4px;
+}
+.search i{
+    border-right: 2px solid var(--third-color);
+    padding: 0 5px;
+}
+.card{
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 2.5rem;
+}
+.card img{
+    width: 75%;
+    height: 300px;
+}
+.desc{
+    width: 80%;
+}
 /* Alumni End */
 .profile {
     object-fit: scale-down;
@@ -408,15 +453,57 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 /* Berita */
 .berita-body {
     overflow-x: auto;
-    white-space: no-wrap;
 }
 .berita {
     width: 20rem;
 }
+.berita div{
+    height: 325px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.7rem;
+}
+
 .berita img {
-    object-fit: contain;
-    width: 350px;
-    height: 250px;
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+}
+
+.beritas div{
+    height: 100%;
+    width: 100%;
+}
+.beritas img {
+    object-fit: cover;
+    width: 70%;
+    height: 300px;
+}
+
+.berita-content p:nth-child(1){
+    font-size: 30px;
+    font-weight: 600;
+}
+.berita-content div{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 150px;
+    margin-bottom: 2rem;
+}
+.berita-content a{
+    border-radius: 20px;
+    padding: 10px;
+    width: fit-content;
+    text-decoration: none;
+    color: var(--second-color);
+}
+.berita-content i{
+    transition: .3s all ease-in-out;
+}
+
+.berita-content a:hover i{
+    margin-left: 10px;
+    transition: .3s all ease-in-out;
 }
 /* Berita End */
 /* Tentang Ads */
@@ -459,3 +546,9 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     width: 15rem;
 }
 /* End Video Profile */
+
+/* Footer Start */
+footer{
+    height: 25vh;
+}
+/* Footer End */

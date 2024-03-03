@@ -39,20 +39,17 @@
     <div class="container mt-5" id="berita">
         <h1>Informasi Terbaru <i class="bi bi-newspaper"></i></h1>
         <div class="berita-body d-flex h-100 d-flex flex-row gap-5 align-item-center flex-nowrap">
-            <div class="berita d-flex flex-column gap-2 mb-3">
-                <img src="{{ asset('assets/images/logo_jurusan/img/img/lapangan.png') }}" alt="news">
-                <h2>Judul Berita</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum
-                </p>
-                <div class="d-flex justify-content-around align-items-center">
-                    <a class="btn btn-primary w-50" href="{{ url('/') }}">View More</a>
-                    <p class="mt-3">Tanggal Buatnya</p>
+            @foreach ($page['berita'] as $item)
+                <div class="berita d-flex flex-column gap-2 mb-3">
+                    <img src="{{ asset("/storage/$item->foto") }}" alt="news">
+                    <h2>{{ $item->judul }}</h2>
+                    @php echo $item->desc; @endphp
+                    <div class="d-flex justify-content-around align-items-center" style="height: 5rem;">
+                        <a class="btn btn-primary w-50" href="{{ url('/') }}">View More</a>
+                        <p class="mt-3">{{ $item->created_at }}</p>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <a href="{{ url('/about') }}" class="ads-tentang container-fluid d-flex justify-content-center align-items-center">
@@ -62,8 +59,9 @@
         <div class="d-flex justify-content-center mb-5">
             <h1 class="text-center">Video Profile</h1>
         </div>
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Wlwo0yxazAg?si=6CYAC-HO6J4E7RoD"
-            title="YouTube video player" frameborder="0"
+        <iframe width="100%" height="90%"
+            src="https://www.youtube.com/embed/Wlwo0yxazAg?si=Uh_2QZEWQ_0dLwSb&amp;controls=0" title="YouTube video player"
+            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
     </div>
