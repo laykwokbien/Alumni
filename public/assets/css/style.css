@@ -278,7 +278,7 @@ hr {
 }
 /* End of Hero */
 /* Alumni Start */
-#alumni{
+#alumni {
     background-image: url(../images/background-alumni.jpg);
     background-size: cover;
     background-position: center;
@@ -286,28 +286,34 @@ hr {
     margin: 0;
     padding: 0;
 }
-#alumni h1{
+#alumni h1 {
     backdrop-filter: blur(5px);
     text-shadow: 5px 5px 4px black;
-    background-image: linear-gradient(180deg, transparent, #fefefe 80%);
+    background-image: linear-gradient(
+        180deg,
+        transparent 60%,
+        #fff 90%,
+        #fff 95%,
+        #fff 100%
+    );
 }
-.search{
+.search {
     width: 20rem;
     right: 0;
     top: -50px;
     border: 2px solid var(--third-color);
 }
-.search input{
+.search input {
     width: 100%;
     border: none;
     padding: 4px;
     padding-left: 4px;
 }
-.search i{
+.search i {
     border-right: 2px solid var(--third-color);
     padding: 0 5px;
 }
-.card{
+.card {
     width: 30%;
     box-sizing: border-box;
     display: flex;
@@ -317,14 +323,67 @@ hr {
     padding: 1rem 0;
     gap: 2.5rem;
 }
-.card img{
-    width: 75%;
+.card img {
+    margin: 2rem;
+    width: 60%;
     height: 300px;
 }
-.desc{
+.desc {
     width: 80%;
+    height: 15rem;
 }
 /* Alumni End */
+/* About start */
+#about {
+    background-image: url(../images/background-tentang.png);
+    background-size: cover;
+    background-position-y: 70%;
+    height: 100vh;
+    padding: 0;
+}
+#about h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    color: white;
+    text-shadow: 4px 5px 5px black;
+    background-image: linear-gradient(
+        180deg,
+        transparent 60%,
+        #fff 90%,
+        #fff 95%,
+        #fff 100%
+    );
+}
+.desc-location {
+    text-align: center;
+    align-self: center;
+    font-size: 1.5rem;
+}
+
+#visi {
+    height: 20rem;
+}
+
+#visi h2 {
+    position: relative;
+}
+#visi h2::after {
+    position: absolute;
+    content: "";
+    background: var(--fourth-color);
+    display: flex;
+    width: 100%;
+    height: 8px;
+    bottom: -10px;
+}
+#visi div {
+    width: 30%;
+}
+/* About End */
 .profile {
     object-fit: scale-down;
     object-position: center;
@@ -457,7 +516,7 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 .berita {
     width: 20rem;
 }
-.berita div{
+.berita div {
     height: 325px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -466,11 +525,11 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 
 .berita img {
     object-fit: cover;
-    width: 100%;
+    width: 300px;
     height: 200px;
 }
 
-.beritas div{
+.beritas div {
     height: 100%;
     width: 100%;
 }
@@ -480,30 +539,30 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     height: 300px;
 }
 
-.berita-content p:nth-child(1){
+.berita-content p:nth-child(1) {
     font-size: 30px;
     font-weight: 600;
 }
-.berita-content div{
+.berita-content div {
     overflow: hidden;
     text-overflow: ellipsis;
     height: 150px;
     margin-bottom: 2rem;
 }
-.berita-content a{
+.berita-content a {
     border-radius: 20px;
     padding: 10px;
     width: fit-content;
     text-decoration: none;
     color: var(--second-color);
 }
-.berita-content i{
-    transition: .3s all ease-in-out;
+.berita-content i {
+    transition: 0.3s all ease-in-out;
 }
 
-.berita-content a:hover i{
+.berita-content a:hover i {
     margin-left: 10px;
-    transition: .3s all ease-in-out;
+    transition: 0.3s all ease-in-out;
 }
 /* Berita End */
 /* Tentang Ads */
@@ -548,7 +607,7 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 /* End Video Profile */
 
 /* Footer Start */
-footer{
+footer {
     height: 25vh;
 }
 /* Footer End */

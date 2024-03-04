@@ -12,7 +12,7 @@
         </form>
     </div>
     <h1 class="text-center mb-3">Alumni</h1>
-    <div class="row gap-5 d-flex justify-content-center">
+    <div class="row gap-5 d-flex justify-content-center w-100" style="box-sizing: border-box">
         @foreach ($page['alumni'] as $alumni)
             <div class="col-4 card">
                 <img src="{{ asset("/storage/$alumni->foto") }}" alt="">

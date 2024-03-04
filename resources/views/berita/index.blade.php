@@ -1,7 +1,7 @@
 @extends('template.master')
 
 @section('dashboard')
-    <div class="container mt-5 vh-100">
+    <div class="container mt-5">
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <a href="{{ url('/create/berita') }}" class="btn btn-primary  mb-5">Create</a>
         @endif

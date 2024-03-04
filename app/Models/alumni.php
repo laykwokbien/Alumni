@@ -16,14 +16,9 @@ class alumni extends Model
         $query->when(
             $filters['search'] ?? false,
             function ($query, $search) {
-                return $query->where('nama', 'like', '%', $search, '%')
-                    ->orWhere('tahun_lulus', 'like', '%', $search, '%');
+                return $query->where('nama', 'like', '%'. $search. '%')
+                    ->orWhere('tahun_lulus', 'like', '%'. $search. '%');
             },
-            // $query->when($filters['jurusan'] ?? false, function ($query, $jurusan) {
-            //     return $query->whereHas('isjurusan', function ($query) use ($jurusan) {
-            //         $query->where('jurusan', $jurusan);
-            //     });
-            // })
         );
     }
 

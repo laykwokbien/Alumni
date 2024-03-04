@@ -9,4 +9,6 @@ use Laravel\Sanctum\HasApiTokens;
 class Teacher extends Model
 {
     use HasFactory, HasApiTokens;
+
+    protected $guarded = ['id'];
 }

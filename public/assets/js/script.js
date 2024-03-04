@@ -4,6 +4,7 @@ navbar = document.getElementById('Nav-Bar'),
 home = document.getElementById('home'),
 alumni = document.getElementById('alumni'),
 about = document.getElementById('about'),
+visi = document.getElementById('visi'),
 header = document.querySelector('header');
 
 // Responsive Nav
@@ -34,7 +35,6 @@ if(password != undefined || check != undefined){
 }
 
 // windows
-console.log(home != undefined || about != undefined || alumni != undefined)
 if(home != undefined || about != undefined || alumni != undefined){
     window.addEventListener('scroll', () => {
         if(window.scrollY >= 100){
@@ -43,4 +43,35 @@ if(home != undefined || about != undefined || alumni != undefined){
             header.classList.add('transparent')
         }
     })
+}
+// Visi
+let visiContent = [
+    {
+        'nama': "Berjaya dan Berteknologi",
+        'isi': "SMKN 1 Bondowoso Berjaya Dalam Menerapkan Teknologi Terkini",
+    },
+    {
+        'nama': "Berbudaya",
+        'isi': "Penerapan Pendidikan yang mengintegrasikan nilai - nilai budaya lokal dalam proses belajar mengajar",
+    },
+    {
+        'nama': "Berakhlak",
+        'isi': "Penerapan Pendidikan yang menekankan Pentingnya Nilai-nilai Moral dan Etika Dalam Proses Belajar Mengajar",
+    }
+];
+
+for(let i = 0; i < visiContent.length; i++){
+    let div = document.createElement('div');
+    div.classList.add('d-flex');
+    div.classList.add('flex-column');
+    div.classList.add('gap-3');
+    div.classList.add('col-4');
+    div.classList.add('text-center');
+    let h2 = document.createElement('h2');
+    h2.innerHTML = visiContent[i].nama;
+    let p = document.createElement('p');
+    p.innerHTML = visiContent[i].isi;
+    div.append(h2)
+    div.append(p)
+    visi.append(div)
 }

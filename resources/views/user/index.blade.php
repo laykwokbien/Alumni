@@ -1,6 +1,7 @@
 @extends('template.master')
 
 @section('dashboard')
+    
     <div class="d-flex justify-content-center">
         <table class="table w-75">
             <thead>
@@ -22,6 +23,9 @@
                         @endif
                         <td>{{ $row->email }}</td>
                         <td>{{ $row->updated_at }}</td>
+                        <td class="d-flex">
+                            <a href="{{ url('delete') }}" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

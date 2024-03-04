@@ -3,7 +3,7 @@
         $page['halaman'] == 'alumni' ||
         $page['halaman'] == 'berita' ||
         $page['halaman'] == 'about')
-    <footer class="container-fluid bg-secondary d-flex align-items-end mt-5">
+    <footer class="container-fluid bg-secondary d-flex align-items-end justify-content-center mt-5">
         <h1>@RPL 2024</h1>
     </footer>
 @endif
