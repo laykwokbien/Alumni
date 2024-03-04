@@ -104,6 +104,9 @@
                                 <li>
                                     <a class="dropdown-item" href="{{ url('/admin/view/guru') }}">Check guru</a>
                                 </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ url('/create/guru') }}">Create guru</a>
+                                </li>
                             @endif
                         </ul>
                     </div>

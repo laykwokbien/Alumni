@@ -325,6 +325,7 @@ hr {
 }
 .card img {
     margin: 2rem;
+    object-fit: contain;
     width: 60%;
     height: 300px;
 }
@@ -359,22 +360,25 @@ hr {
     );
 }
 .desc-location {
+    display: flex;
+    justify-content: center;
     text-align: center;
     align-self: center;
     font-size: 1.5rem;
 }
 
 #visi {
-    height: 20rem;
+    height: 100%;
 }
 
 #visi h2 {
     position: relative;
+    margin-top: 5rem;
 }
 #visi h2::after {
     position: absolute;
     content: "";
-    background: var(--fourth-color);
+    background: #303030;
     display: flex;
     width: 100%;
     height: 8px;
@@ -382,6 +386,11 @@ hr {
 }
 #visi div {
     width: 30%;
+}
+@media only screen and (max-width:768px){
+    #visi div {
+        width: 75%;
+    }
 }
 /* About End */
 .profile {
@@ -563,6 +572,20 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 .berita-content a:hover i {
     margin-left: 10px;
     transition: 0.3s all ease-in-out;
+}
+@media only screen and (max-width:768px){
+    .beritas img {
+        object-fit: cover;
+        width: 100%;
+        height: 300px;
+    }
+}
+@media only screen and (max-width:1024px){
+    .beritas img {
+        object-fit: cover;
+        width: 100%;
+        height: 300px;
+    }
 }
 /* Berita End */
 /* Tentang Ads */

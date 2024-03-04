@@ -132,6 +132,7 @@ class ControllerUser extends Controller
         $page = array(
             'halaman' => 'admin',
             'data' => User::get(),
+            'delete' => false,
         );
 
         return view('user.index', compact('page'));
@@ -139,8 +140,9 @@ class ControllerUser extends Controller
     public function viewguru()
     {
         $page = array(
-            'halaman' => 'admin',
+            'halaman' => 'superadmin',
             'data' => Teacher::get(),
+            'delete' => false,
         );
 
         return view('user.index', compact('page'));
@@ -150,6 +152,7 @@ class ControllerUser extends Controller
         $page = array(
             'halaman' => 'viewalumni',
             'data' => useralumni::with('isData')->get(),
+            'delete' => false,
         );
 
         return view('user.index', compact('page'));
@@ -244,5 +247,55 @@ class ControllerUser extends Controller
         ]);
 
         return redirect('/login')->with('success', 'Akun berhasil untuk dibuat');
+    }
+
+    public function gotoCreateguru()
+    {
+        $page = array(
+            'halaman' => 'createguru',
+        );
+        return view('guru.create', compact('page'));
+    }
+
+    public function createguru()
+    {
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required|unique:useralumnis,username|unique:teachers,name|unique:admins,name|unique:users,name',
+            'email' => 'required|unique:useralumnis,email|unique:teachers,email|unique:admins,email|unique:users,email',
+            'password' => 'required',
+        ], [
+            'name.required' => 'Nama harap diisi dengan benar',
+            'name.unique' => 'Username ini sudah digunakan',
+            'email.required' => 'Email harap diisi dengan benar',
+            'email.unique' => 'Email ini sudah digunakan',
+            'password.required' => 'password harap diisi dengan benar',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->with('fails', $validator->messages()->get('*'));
+        }
+
+        Teacher::create([
+            'name' => request()->input('name'),
+            'email' => request()->input('email'),
+            'password' => bcrypt(request()->input('password')),
+        ]);
+
+        return redirect('/admin/view/guru')->with('success', 'New Record has been successfully created');
+    }
+
+    public function confirmguru($id)
+    {
+        $page = array(
+            'halaman' => 'superadmin',
+            'data' => Teacher::get(),
+            'delete' => true
+        );
+        return view('user.index', compact('page'));
+    }
+    public function deleteguru($id)
+    {
+        Teacher::where('id', $id)->delete();
+        return redirect('/admin/view/guru')->with('success', 'Record has been successfully deleted');
     }
 }

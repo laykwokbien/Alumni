@@ -1,6 +1,7 @@
 @extends('template.master')
 
 @section('dashboard')
+@if (!Auth::guard('web')->check() || !Auth::guard('alumni')->check())
     <div class="position-absolute messages d-flex w-100 justify-content-center pe-none">
         @if (session()->has('fail'))
             @foreach (session('fail') as $col)
@@ -36,6 +37,7 @@
             </container>
         @endif
     </div>
+@endif
     <div class="container d-flex flex-column flex-lg-row gap-3">
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <form action="" method="POST" enctype="multipart/form-data">

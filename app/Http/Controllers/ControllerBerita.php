@@ -65,11 +65,9 @@ class ControllerBerita extends Controller
     public function update($id)
     {
         $validator = Validator::make(request()->all(), [
-            'foto' => 'required',
-            'judul' => 'required|unique:beritas,judul,' + $id,
+            'judul' => 'required|unique:beritas,judul,' . $id,
             'desc' => 'required',
         ], [
-            'foto.required' => "Foto Berita harap diisi dengan benar",
             'judul.required' => "Judul harap diisi dengan benar",
             'judul.unique' => 'Judul sudah digunakan',
             'desc.required' => 'Deskripsi Berita harap diisi',
@@ -104,7 +102,7 @@ class ControllerBerita extends Controller
             'data' => berita::get(),
             'delete' => true,
         );
-        return view('berita.index');
+        return view('berita.index', compact('page'));
     }
 
     public function delete($id)

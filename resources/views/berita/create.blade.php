@@ -1,7 +1,19 @@
 @extends('template.master')
 
 @section('dashboard')
+    <div class="position-absolute messages d-flex w-100 justify-content-center pe-none">
+        @if (session()->has('fail'))
+            @foreach (session('fail') as $col)
+                @foreach ($col as $messages)
+                    <div class="alert alert-danger">
+                        {{ $messages }}
+                    </div>
+                @endforeach
+            @endforeach
+        @endif
+    </div>
     <div class="container mt-5">
+        @csrf
         <h1 style="border-bottom: 2px solid black;">Buat Post Baru</h1>
         <form method="post" enctype="multipart/form-data">
             @csrf

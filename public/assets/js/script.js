@@ -65,7 +65,6 @@ for(let i = 0; i < visiContent.length; i++){
     div.classList.add('d-flex');
     div.classList.add('flex-column');
     div.classList.add('gap-3');
-    div.classList.add('col-4');
     div.classList.add('text-center');
     let h2 = document.createElement('h2');
     h2.innerHTML = visiContent[i].nama;

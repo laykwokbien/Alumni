@@ -48,7 +48,7 @@ Route::middleware('auth:admin,guru,alumni')->group(function () {
 });
 
 Route::middleware('auth:admin')->group(function () {
-    Route::get('/create/berita/{id}', [ControllerBerita::class, 'confirm']);
+    Route::get('/delete/berita/{id}', [ControllerBerita::class, 'confirm']);
     Route::post('/delete/berita/{id}', [ControllerBerita::class, 'delete']);
     Route::get('/delete/jurusan/{id}', [ControllerJurusan::class, 'confirm']);
     Route::post('/delete/jurusan/{id}', [ControllerJurusan::class, 'delete']);
@@ -57,6 +57,10 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/view/user', [ControllerUser::class, 'viewuser']);
     Route::get('/admin/view/guru', [ControllerUser::class, "viewguru"]);
     Route::get('/admin/view/alumni', [ControllerUser::class, 'viewalumni']);
+    Route::get('/create/guru', [ControllerUser::class, 'gotoCreateguru']);
+    Route::post('/create/guru', [ControllerUser::class, 'createguru']);
+    Route::get('/delete/guru/{id}', [ControllerUser::class, 'confirmguru']);
+    Route::post('/delete/guru/{id}', [ControllerUser::class, 'deleteguru']);
 });
 
 
