@@ -670,3 +670,17 @@ footer {
     height: 25vh;
 }
 /* Footer End */
+/* Dashboard */
+.analysis{
+    width: fit-content;
+    background-color: var(--second-color);
+    padding: 1rem 2rem;
+    height: fit-content;
+    border-radius: 10px;
+    border: 3.5px solid var(--third-color);
+}
+.analysis p:nth-child(1){
+    font-size: 20px;
+    font-weight: 600;
+}
+/* Dashboard End */

@@ -11,10 +11,10 @@ header = document.querySelector('header');
 // Responsive Nav
 burger.addEventListener('click', () => {
     burger.classList.toggle('burger-active')
-    if(burger =! undefined){
+    if(burger != undefined){
         navbar.classList.toggle('nav-expand');
     }
-    if(sidebar =! undefined){
+    if(sidebar != undefined){
         sidebar.classList.toggle('sidebar-expand')
     }
 });
@@ -66,17 +66,19 @@ let visiContent = [
     }
 ];
 
-for(let i = 0; i < visiContent.length; i++){
-    let div = document.createElement('div');
-    div.classList.add('d-flex');
-    div.classList.add('flex-column');
-    div.classList.add('gap-3');
-    div.classList.add('text-center');
-    let h2 = document.createElement('h2');
-    h2.innerHTML = visiContent[i].nama;
-    let p = document.createElement('p');
-    p.innerHTML = visiContent[i].isi;
-    div.append(h2)
-    div.append(p)
-    visi.append(div)
+if(visi != undefined){
+    for(let i = 0; i < visiContent.length; i++){
+        let div = document.createElement('div');
+        div.classList.add('d-flex');
+        div.classList.add('flex-column');
+        div.classList.add('gap-3');
+        div.classList.add('text-center');
+        let h2 = document.createElement('h2');
+        h2.innerHTML = visiContent[i].nama;
+        let p = document.createElement('p');
+        p.innerHTML = visiContent[i].isi;
+        div.append(h2)
+        div.append(p)
+        visi.append(div)
+    }
 }

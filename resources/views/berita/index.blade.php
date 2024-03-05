@@ -31,6 +31,13 @@
         </div>
     @endif
     <div class="container mt-5 position-relative">
+        <form class="d-flex flex-row-reverse position-absolute search" data-filter-container="close">
+            @csrf
+            <input type="text" name="search">
+            <button style="background:transparent; border: none;" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+    <div class="container mt-5 position-relative">
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <a href="{{ url('/create/berita') }}" class="btn btn-primary  mb-5">Create</a>
         @endif
@@ -43,7 +50,7 @@
                         @php echo $item->desc; @endphp
                         <a href="{{ url("/berita/view/$item->id") }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
                     </div>
-                    <div class="d-flex flex-column position-absolute" style="right: -.5rem">
+                    <div class="d-flex flex-column position-absolute" style="right: -.5rem; height: fit-content;">
                         <div class="mt-2">
                             <a href="{{ url("update/berita/$item->id") }}" class="btn btn-warning">
                                 <i class="bi bi-pencil-square"></i>

@@ -31,13 +31,14 @@ class ControllerUser extends Controller
         );
         return view('alumni', compact('page'));
     }
-    public function dashboard(){
+    public function dashboard()
+    {
         $data = array(
             'jurusan' => jurusan::get(),
             'alumni' => alumni::get(),
             'user' => User::get(),
         );
-        return view('dashboard');
+        return view('dashboard', compact('data'));
     }
 
     public function about()

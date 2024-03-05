@@ -26,10 +26,10 @@
     </div>
     <div class="container-fluid d-flex justify-content-center" id="Ads">
         <div class="container row h-100 py-5">
-            <div class="col-6 d-flex justify-content-center align-items-center">
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <object data="{{ asset('assets/images/graduation_cap.svg') }}"></object>
             </div>
-            <div class="col-6 d-flex flex-column align-items-center justify-content-center text-center gap-4">
+            <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center text-center gap-4">
                 <h1>Cari tahu Alumni kami secara mendalam!</h1>
                 <p>Cari tahu alumni kami dengan mengklik tombol di bawah ini!</p>
                 <a class="btn btn-ads" href="{{ url('/alumni') }}">Click Me!</a>
