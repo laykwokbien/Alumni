@@ -21,8 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ControllerUser::class, 'index']);
 Route::get('/berita', [ControllerBerita::class, 'index']);
 Route::get('/about', [ControllerUser::class, 'about']);
+Route::get('berita/view/{id}', [ControllerBerita::class, 'show']);
 
 Route::middleware('auth:web,admin,guru,alumni')->group(function () {
+    Route::get('/dashboard', [ControllerUser::class, 'dashboard']);
     Route::get('/alumni', [ControllerUser::class, "alumni"]);
     Route::get('/create/jurusan', [ControllerJurusan::class, 'index']);
     Route::get('/view/alumni', [ControllerAlumni::class, 'index']);

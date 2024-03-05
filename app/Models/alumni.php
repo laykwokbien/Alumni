@@ -16,8 +16,10 @@ class alumni extends Model
         $query->when(
             $filters['search'] ?? false,
             function ($query, $search) {
-                return $query->where('nama', 'like', '%'. $search. '%')
-                    ->orWhere('tahun_lulus', 'like', '%'. $search. '%');
+                return $query->where('nama', 'like', '%' . $search . '%')
+                    ->orWhere('alamat', 'like', '%' . $search . '%')
+                    ->orWhere('tahun_lulus', 'like', '%' . $search . '%')
+                    ->orWhere('nisn', 'like', '%' . $search . '%');
             },
         );
     }

@@ -45,7 +45,7 @@
                     <h2>{{ $item->judul }}</h2>
                     @php echo $item->desc; @endphp
                     <div class="d-flex justify-content-around align-items-center" style="height: 5rem;">
-                        <a class="btn btn-primary w-50" href="{{ url('/') }}">View More</a>
+                        <a class="btn btn-primary w-50" href="{{ url("/berita/view/$item->id") }}">View More</a>
                         <p class="mt-3">{{ $item->created_at }}</p>
                     </div>
                 </div>

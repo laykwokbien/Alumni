@@ -2,7 +2,7 @@
 
 @section('dashboard')
     @if (!Auth::guard('web')->check() || !Auth::guard('alumni')->check())
-        <div class="position-absolute messages d-flex w-100 justify-content-center pe-none">
+        <div class="position-absolute messages d-flex w-100 justify-content-center pe-none" style="z-index: 9999">
             @if (session()->has('fail'))
                 @foreach (session('fail') as $col)
                     @foreach ($col as $messages)
@@ -30,29 +30,34 @@
             @endif
         </div>
     @endif
-    <div class="container mt-5">
+    <div class="container mt-5 position-relative">
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <a href="{{ url('/create/berita') }}" class="btn btn-primary  mb-5">Create</a>
         @endif
-        <br>
-        @foreach ($page['data'] as $item)
-            @if (Auth::guard('admin')->Check() || Auth::guard('guru')->Check())
-                <div class="d-flex flex-column">
-                    <p>Action</p>
-                    <div class="mt-2">
-                        <a href="{{ url("update/berita/$item->id") }}" class="btn btn-warning">Edit</a>
-                        <a href="{{ url("delete/berita/$item->id") }}" class="btn btn-danger">Remove</a>
+        <div class="d-flex flex-column-reverse">
+            @foreach ($page['data'] as $item)
+                <div class="beritas d-flex flex-column flex-lg-row gap-3 mb-3 position-relative">
+                    <img src="{{ asset("./storage/$item->foto") }}" alt="">
+                    <div class="berita-content d-flex flex-column">
+                        <p>{{ $item->judul }}</p>
+                        @php echo $item->desc; @endphp
+                        <a href="{{ url("/berita/view/$item->id") }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="d-flex flex-column position-absolute" style="right: -.5rem">
+                        <div class="mt-2">
+                            <a href="{{ url("update/berita/$item->id") }}" class="btn btn-warning">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a href="{{ url("delete/berita/$item->id") }}" class="btn btn-danger">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            @endif
-            <div class="beritas d-flex flex-column flex-lg-row gap-3 mb-3">
-                <img src="{{ asset("./storage/$item->foto") }}" alt="">
-                <div class="berita-content d-flex flex-column">
-                    <p>{{ $item->judul }}</p>
-                    @php echo $item->desc; @endphp
-                    <a href="{{ url("/berita/view/$item->id") }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-        @endforeach
+                @if (Auth::guard('admin')->Check() || Auth::guard('guru')->Check())
+                @endif
+            @endforeach
+        </div>
+
     </div>
 @endsection

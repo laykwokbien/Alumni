@@ -50,7 +50,7 @@
                         Auth::guard('guru')->check() ||
                         Auth::guard('admin')->check() ||
                         Auth::guard('alumni')->check())
-                    <div class="nav-item dropdown @if ($page['halaman'] == 'home') {{ 'transparent' }} @endif">
+                    <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown"aria-expanded="false">
                             @if (Auth::guard('web')->check())
@@ -83,31 +83,12 @@
                                     </i>
                                 </a>
                             </li>
-                            <hr>
                             <li>
-                                <p class="text-white text-center mt-3">Action</p>
+                                <a class="dropdown-item text-center" href="{{ url('/dashboard') }}">
+                                    <i class="bi bi-speedometer"></i>
+                                    Dashboard
+                                </a>
                             </li>
-                            <hr>
-                            <li>
-                                <a class="dropdown-item" href="{{ url('/create/jurusan') }}">Jurusan</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ url('/view/alumni') }}">Data Alumni</a>
-                            </li>
-                            @if (Auth::guard('admin')->check())
-                                <li>
-                                    <a class="dropdown-item" href="{{ url('/admin/view/user') }}">Check User</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ url('/admin/view/alumni') }}">Check Alumni</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ url('/admin/view/guru') }}">Check guru</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ url('/create/guru') }}">Create guru</a>
-                                </li>
-                            @endif
                         </ul>
                     </div>
                 @else

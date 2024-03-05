@@ -13,7 +13,7 @@ class ControllerBerita extends Controller
     {
         $page = array(
             'halaman' => 'berita',
-            'data' => berita::get(),
+            'data' => berita::latest()->filter(['search'])->get(),
             'delete' => false,
         );
         return view('berita.index', compact('page'));
@@ -80,7 +80,7 @@ class ControllerBerita extends Controller
         if (request()->file() != null) {
             request()->file('foto')->store('/berita');
 
-            berita::create([
+            berita::where('id', $id)->update([
                 'foto' => request()->file('foto')->store('/foto'),
                 'judul' => request()->input('judul'),
                 'desc' => request()->input('desc'),
@@ -110,5 +110,14 @@ class ControllerBerita extends Controller
         berita::where('id', $id)->delete();
 
         return redirect('/berita')->with('success', 'Data berhasil untuk dihapus');
+    }
+
+    public function show($id)
+    {
+        $id = berita::find($id);
+        $page = array(
+            'halaman' => 'beritakonten',
+        );
+        return view('berita.berita', compact(['page', 'id']));
     }
 }

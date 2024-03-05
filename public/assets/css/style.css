@@ -65,7 +65,7 @@ header {
     background-color: var(--fourth-color);
 }
 
-nav {
+header nav {
     color: var(--first-color);
     height: 80px;
 }
@@ -298,8 +298,9 @@ hr {
     );
 }
 .search {
-    width: 20rem;
     right: 0;
+    background-color: #fff;
+    width: 20rem;
     top: -50px;
     border: 2px solid var(--third-color);
 }
@@ -315,23 +316,23 @@ hr {
 }
 .card {
     width: 30%;
+    height: fit-content;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0;
+    padding: 2.5rem 0;
     gap: 2.5rem;
 }
 .card img {
-    margin: 2rem;
     object-fit: contain;
     width: 60%;
     height: 300px;
 }
 .desc {
     width: 80%;
-    height: 15rem;
+    height: fit-content;
 }
 /* Alumni End */
 /* About start */
@@ -387,7 +388,7 @@ hr {
 #visi div {
     width: 30%;
 }
-@media only screen and (max-width:768px){
+@media only screen and (max-width: 768px) {
     #visi div {
         width: 75%;
     }
@@ -573,14 +574,40 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     margin-left: 10px;
     transition: 0.3s all ease-in-out;
 }
-@media only screen and (max-width:768px){
+
+.berita-each img {
+    width: 100%;
+    object-fit: cover;
+    height: 500px;
+}
+
+.return {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    text-decoration: none;
+    color: var(--third-color);
+    font-size: 20px;
+}
+
+.return i {
+    transition: 0.3s all ease-in-out;
+    margin-right: 5px;
+}
+
+.return:hover i {
+    margin-right: 10px;
+    transition: 0.3s all ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
     .beritas img {
         object-fit: cover;
         width: 100%;
         height: 300px;
     }
 }
-@media only screen and (max-width:1024px){
+@media only screen and (max-width: 1024px) {
     .beritas img {
         object-fit: cover;
         width: 100%;
@@ -628,6 +655,15 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     width: 15rem;
 }
 /* End Video Profile */
+
+/* Sidebar Start */
+.sidebar {
+    color: #fff;
+    background-color: var(--third-color);
+    width: 20%;
+    height: 100vh;
+}
+/* Sidebar End */
 
 /* Footer Start */
 footer {

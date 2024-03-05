@@ -1,6 +1,7 @@
 const alert = document.querySelectorAll('.alert'),
 burger = document.querySelector('.burger'),
 navbar = document.getElementById('Nav-Bar'),
+sidebar = document.querySelector('.sidebar'),
 home = document.getElementById('home'),
 alumni = document.getElementById('alumni'),
 about = document.getElementById('about'),
@@ -10,7 +11,12 @@ header = document.querySelector('header');
 // Responsive Nav
 burger.addEventListener('click', () => {
     burger.classList.toggle('burger-active')
-    navbar.classList.toggle('nav-expand');
+    if(burger =! undefined){
+        navbar.classList.toggle('nav-expand');
+    }
+    if(sidebar =! undefined){
+        sidebar.classList.toggle('sidebar-expand')
+    }
 });
 
 

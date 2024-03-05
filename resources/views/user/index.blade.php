@@ -1,4 +1,4 @@
-@extends('template.master')
+@extends('template.dashboard')
 
 @section('dashboard')
     <div class="position-absolute messages d-flex flex-column w-100 align-items-center">
@@ -18,8 +18,11 @@
             </form>
         @endif
     </div>
-    <div class="d-flex justify-content-center">
-        <table class="table w-75">
+    <div class="d-flex flex-column container mt-5">
+        @if (Auth::guard('admin')->check() && $page['halaman'] == 'superadmin')
+            <a href="{{ url('/create/guru') }}" class="btn btn-primary" style="width: 10rem">Create Guru</a>
+        @endif
+        <table class="table w-100">
             <thead>
                 <th>#</th>
                 <th>Name</th>

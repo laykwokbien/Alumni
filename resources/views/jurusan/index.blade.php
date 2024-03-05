@@ -1,44 +1,44 @@
-@extends('template.master')
+@extends('template.dashboard')
 
 @section('dashboard')
-@if (!Auth::guard('web')->check() || !Auth::guard('alumni')->check())
-    <div class="position-absolute messages d-flex w-100 justify-content-center pe-none">
-        @if (session()->has('fail'))
-            @foreach (session('fail') as $col)
-                @foreach ($col as $messages)
-                    <div class="alert alert-danger">
-                        {{ $messages }}
-                    </div>
+    @if (!Auth::guard('web')->check() || !Auth::guard('alumni')->check())
+        <div class="position-absolute messages d-flex flex-column w-100 align-items-center pe-none">
+            @if (session()->has('fail'))
+                @foreach (session('fail') as $col)
+                    @foreach ($col as $messages)
+                        <div class="alert alert-danger w-25">
+                            {{ $messages }}
+                        </div>
+                    @endforeach
                 @endforeach
-            @endforeach
-        @else
-            @if (session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
+            @else
+                @if (session()->has('success'))
+                    <div class="alert alert-success w-25">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            @endif
+            @if (session()->has('messages'))
+                <div class="alert alert-danger w-25">
+                    {{ session('messages') }}
                 </div>
             @endif
-        @endif
-        @if (session()->has('messages'))
-            <div class="alert alert-danger">
-                {{ session('messages') }}
-            </div>
-        @endif
-        @if ($page['delete'])
-            <container class="d-flex flex-column delete p-4">
-                @csrf
-                <div class="mb-3">Are you wanna delete this record?</div>
-                <div class="selectionbtn d-flex justify-content-around">
-                    <form method="POST">
-                        @csrf
-                        <button class="btn btn-danger" type="submit">Yes</button>
-                    </form>
-                    <a href="{{ url('/create/jurusan') }}" class="btn btn-primary">No</a>
-                </div>
-            </container>
-        @endif
-    </div>
-@endif
-    <div class="container d-flex flex-column flex-lg-row gap-3">
+            @if ($page['delete'])
+                <container class="d-flex flex-column delete p-4">
+                    @csrf
+                    <div class="mb-3">Are you wanna delete this record?</div>
+                    <div class="selectionbtn d-flex justify-content-around">
+                        <form method="POST">
+                            @csrf
+                            <button class="btn btn-danger" type="submit">Yes</button>
+                        </form>
+                        <a href="{{ url('/create/jurusan') }}" class="btn btn-primary">No</a>
+                    </div>
+                </container>
+            @endif
+        </div>
+    @endif
+    <div class="container d-flex flex-column flex-lg-row gap-3 justify-content-center align-items-center vh-100">
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <form action="" method="POST" enctype="multipart/form-data">
                 @csrf

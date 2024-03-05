@@ -1,4 +1,4 @@
-@extends('template.master')
+@extends('template.dashboard')
 
 @section('dashboard')
     <div class="position-absolute messages d-flex w-100 justify-content-center">

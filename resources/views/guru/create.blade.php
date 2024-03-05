@@ -1,19 +1,19 @@
-@extends('template.master')
+@extends('template.dashboard')
 
 @section('dashboard')
-    <div class="position-absolute messages d-flex flex-column w-100 align-items-center pe-none mt-3">
-        @if (session()->has('fail'))
-            @foreach (session('fail') as $col)
-                @foreach ($col as $messages)
-                    <div class="alert alert-danger pe-none">
-                        {{ $messages }}
-                    </div>
+    <div class="container w-25 vh-100 d-flex flex-column justify-content-center">
+        <div class="position-absolute messages d-flex flex-column w-100 align-items-center pe-none mt-3">
+            @if (session()->has('fail'))
+                @foreach (session('fail') as $col)
+                    @foreach ($col as $messages)
+                        <div class="alert alert-danger pe-none">
+                            {{ $messages }}
+                        </div>
+                    @endforeach
                 @endforeach
-            @endforeach
-        @endif
-    </div>
-    <div class="container w-25">
-        <form class="middleware d-flex flex-column gap-3 mt-5" method="POST">
+            @endif
+        </div>
+        <form class="middleware d-flex flex-column justify-content-center gap-3 h-100" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>

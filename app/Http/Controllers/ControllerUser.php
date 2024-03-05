@@ -27,13 +27,19 @@ class ControllerUser extends Controller
     {
         $page = array(
             'halaman' => 'alumni',
-            'alumni' => alumni::latest()->filter(request(['search']))->get(),
+            'alumni' => alumni::latest()->filter(request(['search'], ['jurusan']))->get(),
         );
         return view('alumni', compact('page'));
     }
-    public function search()
-    {
+    public function dashboard(){
+        $data = array(
+            'jurusan' => jurusan::get(),
+            'alumni' => alumni::get(),
+            'user' => User::get(),
+        );
+        return view('dashboard');
     }
+
     public function about()
     {
         $page = array(

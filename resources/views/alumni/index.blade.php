@@ -1,4 +1,4 @@
-@extends('template.master')
+@extends('template.dashboard')
 
 @section('dashboard')
     @if (!Auth::guard('web')->check() || !Auth::guard('alumni')->check())

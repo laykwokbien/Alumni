@@ -1,4 +1,4 @@
-@extends('template.master')
+@extends('template.dashboard')
 
 @section('dashboard')
     <div class="position-absolute messages d-flex flex-column w-100 align-items-center pe-none">
@@ -28,7 +28,8 @@
             <span>&#8678;</span><span>Back</span>
         </a>
     </div>
-    <form class="container w-75 mt-1" action="" method="POST" enctype="multipart/form-data">
+    <form class="container w-100 vh-100 d-flex align-items-center" action="" method="POST"
+        enctype="multipart/form-data">
         @csrf
         <div class="row w-100 gap-2 justify-content-center">
             <div class="col-5 d-flex flex-column align-items-center justify-content-center">
