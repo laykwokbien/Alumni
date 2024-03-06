@@ -12,13 +12,13 @@
     <title>Document</title>
 </head>
 
-<body class="d-flex">
-    <div class="burger">
+<body class="d-flex flex-column flex-md-row justify-content-between">
+    <div class="burger bg-burger">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
     </div>
-    <div class="sidebar">
+    <div class="sidebar flex-column" id="sidebar">
         <p class="text-center mt-5 w-100">
             @if (Auth::guard('web')->check())
                 Welcome back, {{ Auth::guard('web')->user()->name }}
@@ -33,7 +33,7 @@
                 Welcome back, {{ Auth::guard('alumni')->user()->username }}
             @endif
         </p>
-        <nav class="nav-list d-flex flex-column gap-3 mt-5">
+        <nav class="nav-list d-flex flex-column flex-row gap-3 mt-md-5">
             <div class="nav-item">
                 <a class="nav-link text-center" href="{{ url('/') }}">
                     Home

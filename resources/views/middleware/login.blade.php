@@ -8,7 +8,7 @@
             </div>
         @endif
     </div>
-    <div class="container w-25 h-75">
+    <div class="container middlewarewidth h-75">
         <form class="middleware d-flex flex-column gap-3 justify-content-center" method="POST">
             @csrf
             <div class="h3 align-self-center">Login</div>

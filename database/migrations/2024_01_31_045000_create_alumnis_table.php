@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('foto');
             $table->string('nama')->unique();
-            $table->bigInteger('nisn')->unique();
+            $table->string('nisn')->unique();
             $table->foreignId('jurusan')->references('id')->on('jurusans');
             $table->string('ttl');
             $table->string('alamat');

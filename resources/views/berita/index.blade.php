@@ -30,7 +30,7 @@
             @endif
         </div>
     @endif
-    <div class="container mt-5 position-relative">
+    <div class="container position-relative" style="margin-top: 5rem">
         <form class="d-flex flex-row-reverse position-absolute search" data-filter-container="close">
             @csrf
             <input type="text" name="search">
@@ -64,6 +64,11 @@
                 @if (Auth::guard('admin')->Check() || Auth::guard('guru')->Check())
                 @endif
             @endforeach
+            @if (count($page['data']) == 0)
+                <div class="d-flex justify-content-center">
+                    <p>Tidak dapat menemukan Data</p>
+                </div>
+            @endif
         </div>
 
     </div>

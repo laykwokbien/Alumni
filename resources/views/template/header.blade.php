@@ -68,15 +68,6 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <div class="d-flex text-center w-100">
-                                    <a class="dropdown-item w-100" href="">
-                                        <i class="bi bi-gear-fill">
-                                            Setting
-                                        </i>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
                                 <a class="dropdown-item text-center" href="{{ url('/logout') }}">
                                     <i class="bi bi-box-arrow-right">
                                         Logout

@@ -1,7 +1,7 @@
 @extends('template.dashboard')
 
 @section('dashboard')
-    <div class="container d-flex gap-5 m-5">
+    <div class="container d-flex flex-column flex-md-row gap-5 m-5 res">
         <div class="analysis">
             <p>Alumni Data</p>
             <p>{{ count($data['alumni']) }}</p>

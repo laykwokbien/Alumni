@@ -314,6 +314,11 @@ hr {
     border-right: 2px solid var(--third-color);
     padding: 0 5px;
 }
+@media only screen and (max-width: 560px) {
+    .search {
+        width: 100%;
+    }
+}
 .card {
     width: 30%;
     height: fit-content;
@@ -435,6 +440,11 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     transition: 0.3s ease-in;
 }
 
+@media only screen and (max-width: 628px) {
+    a[data-btn="backcreate"] {
+        top: 0;
+    }
+}
 .info {
     padding-top: 1rem;
     border-top: solid 2px black;
@@ -448,6 +458,39 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 
 .middleware {
     height: 85vh;
+}
+.middlewarewidth {
+    width: 25%;
+}
+@media only screen and (max-width: 1200px) {
+    .middlewarewidth {
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .middlewarewidth {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 668px) {
+    .middlewarewidth {
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 528px) {
+    .middlewarewidth {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 448px) {
+    .middlewarewidth {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 384px) {
+    .middlewarewidth {
+        width: 100%;
+    }
 }
 /* Jurusan Start */
 .head-jurusan {
@@ -657,11 +700,37 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 /* End Video Profile */
 
 /* Sidebar Start */
+.bg-burger {
+    top: -20px;
+    left: -20px;
+    right: unset;
+}
+.bg-burger .line {
+    background-color: var(--first-color);
+}
+.header {
+    height: 80px;
+    width: 100%;
+    background: transparent;
+}
+
 .sidebar {
     color: #fff;
     background-color: var(--third-color);
     width: 20%;
     height: 100vh;
+    display: flex;
+}
+@media only screen and (max-width: 768px) {
+    .header {
+        background-color: var(--third-color);
+    }
+    .sidebar {
+        display: none;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+    }
 }
 /* Sidebar End */
 
@@ -671,7 +740,7 @@ footer {
 }
 /* Footer End */
 /* Dashboard */
-.analysis{
+.analysis {
     width: fit-content;
     background-color: var(--second-color);
     padding: 1rem 2rem;
@@ -679,8 +748,17 @@ footer {
     border-radius: 10px;
     border: 3.5px solid var(--third-color);
 }
-.analysis p:nth-child(1){
+.analysis p:nth-child(1) {
     font-size: 20px;
     font-weight: 600;
+}
+@media only screen and (max-width: 768px) {
+    .analysis {
+        margin: 0;
+        width: 50%;
+    }
+    .res {
+        width: 100% !important;
+    }
 }
 /* Dashboard End */

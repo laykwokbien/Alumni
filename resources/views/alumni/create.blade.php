@@ -23,7 +23,7 @@
             </div>
         @endif
     </div>
-    <div class="position-absolute d-flex justify-content-end align-items-end pe-none" style="width: 95%;height: 85%">
+    <div class="position-absolute d-flex justify-content-end align-items-md-end pe-none" style="width: 95%;height: 85%">
         <a href="{{ url('view/alumni') }}" class="text-black pe-auto" data-btn="backcreate">
             <span>&#8678;</span><span>Back</span>
         </a>
@@ -32,7 +32,7 @@
         enctype="multipart/form-data">
         @csrf
         <div class="row w-100 gap-2 justify-content-center">
-            <div class="col-5 d-flex flex-column align-items-center justify-content-center">
+            <div class="col-md-5 d-flex flex-column align-items-center justify-content-center">
                 <div class="mb-3 w-100">
                     <label for="foto" class="form-label">Foto:</label>
                     <input autocomplete="off" type="file" name="foto" id="foto" class="form-control"
@@ -44,7 +44,7 @@
                 </div>
                 <div class="mb-3 w-100">
                     <label for="nisn" class="form-label">NISN: </label>
-                    <input autocomplete="off" type="number" name="nisn" id="nisn" minlength="10" maxlength="10"
+                    <input autocomplete="off" type="text" name="nisn" id="nisn" minlength="10" maxlength="10"
                         class="form-control" autocomplete="off">
                 </div>
                 <div class="mb-3 w-100">
@@ -66,11 +66,11 @@
                 </div>
                 <div class="mb-3 w-100">
                     <label for="tlp" class="form-label">No. Telp:</label>
-                    <input autocomplete="off" type="number" name="tlp" id="tlp" class="form-control"
+                    <input autocomplete="off" type="text" name="tlp" id="tlp" class="form-control"
                         autocomplete="off">
                 </div>
             </div>
-            <div class="col-5 d-flex flex-column align-items-center justify-content-center">
+            <div class="col-md-5 d-flex flex-column align-items-center justify-content-center">
                 <div class="mb-3 w-100 border border-secondary p-3">
                     <p>Dapat dikosongkan</p>
                     <label for="instagram" class="form-label">Instagram</label>

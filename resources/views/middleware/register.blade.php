@@ -12,7 +12,7 @@
             @endforeach
         @endif
     </div>
-    <div class="container w-25">
+    <div class="container middlewarewidth">
         <form class="middleware d-flex flex-column gap-3 mt-5" method="POST">
             @csrf
             <div class="h3 align-self-center">Register</div>

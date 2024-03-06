@@ -32,8 +32,8 @@
                 @endforeach
             @endif
         </div>
-        <div class="d-flex flex-column align-items-center mt-5 justify-content-center" style="height: 80vh">
-            <form action="" method="post" class="w-25 d-flex flex-column">
+        <div class="d-flex flex-column middlewarewidth align-items-center mt-5 justify-content-center" style="height: 80vh">
+            <form action="" method="post" class="d-flex flex-column">
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">Email:</label>

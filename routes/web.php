@@ -28,6 +28,7 @@ Route::middleware('auth:web,admin,guru,alumni')->group(function () {
     Route::get('/alumni', [ControllerUser::class, "alumni"]);
     Route::get('/create/jurusan', [ControllerJurusan::class, 'index']);
     Route::get('/view/alumni', [ControllerAlumni::class, 'index']);
+    Route::get('/view/alumni/{id}', [ControllerAlumni::class, 'show']);
     Route::get('/logout', [ControllerUser::class, 'logout']);
 });
 
@@ -46,7 +47,6 @@ Route::middleware('auth:admin,guru')->group(function () {
 Route::middleware('auth:admin,guru,alumni')->group(function () {
     Route::get('/update/alumni/{id}', [ControllerAlumni::class, 'view']);
     Route::post('/update/alumni/{id}', [ControllerAlumni::class, 'update']);
-    Route::get('/view/alumni/{id}', [ControllerAlumni::class, 'show']);
 });
 
 Route::middleware('auth:admin')->group(function () {

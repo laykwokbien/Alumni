@@ -14,7 +14,7 @@
     <h1 class="text-center mb-3">Alumni</h1>
     <div class="row gap-5 d-flex justify-content-center w-100" style="box-sizing: border-box">
         @foreach ($page['alumni'] as $alumni)
-            <div class="col-4 card">
+            <div class="col-6 col-lg-4 card">
                 <img src="{{ asset("/storage/$alumni->foto") }}" alt="">
                 <div class="desc">
                     <h2>{{ $alumni->nama }}</h2>
@@ -22,7 +22,7 @@
                     <p>NISN: <br> {{ $alumni->nisn }}</p>
                     <p>Alamat: <br> {{ $alumni->alamat }}</p>
                     <p>Tahun Lulus: <br> {{ $alumni->tahun_lulus }}</p>
-                    <a href="{{ url('') }}" class="btn btn-primary">Selengkapnya</a>
+                    <a href="{{ url("view/alumni/$alumni->id") }}" class="btn btn-primary">Selengkapnya</a>
                 </div>
             </div>
         @endforeach

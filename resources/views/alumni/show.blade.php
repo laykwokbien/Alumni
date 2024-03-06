@@ -2,17 +2,17 @@
 
 @section('dashboard')
     <div class="container d-flex flex-column mt-5">
-        <div class="d-flex justify-content-end">
-            <a href="{{ url('/view/alumni') }}" class="btn-transparent" data-btn="backmore">
+        <div class="d-flex justify-content-md-end mb-sm-3">
+            <a href="{{ url()->previous() }}" class="btn-transparent" data-btn="backmore">
                 <span>&#8678;</span><span>Back</span>
             </a>
         </div>
         <div class="row mb-5 ">
-            <div class="col-6">
+            <div class="col-md-6">
                 <h1>Nama:</h1>
                 <h2>{{ $id->nama }}</h2>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <img class="profile" src="{{ asset('storage/' . $id->foto) }}" draggable="false">
             </div>
         </div>
