@@ -13,7 +13,7 @@
     <div class="container d-flex flex-column justify-content-center align-items-center pt-5 pb-5" id='jurusan'
         id="jurusan">
         <h1 class="text-center mb-5 head-jurusan">Konsentrasi Keahlihan</h1>
-        <div class="row gap-5 d-flex justify-content-center">
+        <div class="row gap-5 d-flex justify-content-center @if (count($page['jurusan']) == 0) {{ 'vh-100' }} @endif">
             @foreach ($page['jurusan'] as $col)
                 <div
                     class="jurusan-each col-6 col-md-4 col-lg-3 d-flex flex-column justify-content-center align-items-center p-5 mb-5">
@@ -38,7 +38,8 @@
     </div>
     <div class="container mt-5" id="berita">
         <h1>Informasi Terbaru <i class="bi bi-newspaper"></i></h1>
-        <div class="berita-body d-flex h-100 d-flex flex-row gap-5 align-item-center flex-nowrap">
+        <div
+            class="berita-body d-flex @if (count($page['berita']) != 0) {{ 'h-100' }} @endif  d-flex flex-row gap-5 align-item-center flex-nowrap @if (count($page['berita']) == 0) {{ 'vh-100' }} @endif">
             @foreach ($page['berita'] as $item)
                 <div class="berita d-flex flex-column gap-2 mb-3">
                     <img src="{{ asset("/storage/$item->foto") }}" alt="news">

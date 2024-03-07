@@ -6,6 +6,7 @@ home = document.getElementById('home'),
 alumni = document.getElementById('alumni'),
 about = document.getElementById('about'),
 visi = document.getElementById('visi'),
+goup = document.querySelector('.goup'),
 header = document.querySelector('header');
 
 // Responsive Nav
@@ -43,10 +44,14 @@ if(password != undefined || check != undefined){
 // windows
 if(home != undefined || about != undefined || alumni != undefined){
     window.addEventListener('scroll', () => {
+        console.log(window.scrollY)
         if(window.scrollY >= 100){
             header.classList.remove('transparent')
         } else {
             header.classList.add('transparent')
+        }
+        if(window.scrollY >= 200){
+            goup.classList.remove('active');
         }
     })
 }
