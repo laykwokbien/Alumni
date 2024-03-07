@@ -40,7 +40,7 @@
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <a href="{{ url('/create/alumni') }}" class="btn btn-primary mt-5 mb-3">Create</a>
         @endif
-        <div class="table-respon">
+        <div class="table-respon mt-5">
             <table class="table">
                 <thead>
                     <th scope="col">#</th>
@@ -56,9 +56,9 @@
                     @endif
                 </thead>
                 <tbody>
-                    @foreach ($page['data'] as $row)
+                    @foreach ($page['data'] as $item => $row)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item + $page['data']->firstItem() }}</td>
                             @if (Auth::guard('admin')->check() || Auth::guard('guru')->check() || Auth::guard('alumni')->check())
                                 <td>{{ $row->nisn }}</td>
                             @endif
@@ -86,6 +86,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="table-page">
+                {{ $page['data']->links() }}
+            </div>
         </div>
     </div>
 @endsection

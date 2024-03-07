@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->foreignId('jurusan')->references('id')->on('jurusans');
             $table->string('ttl');
             $table->string('alamat');
-            $table->bigInteger('tlp');
+            $table->string('tlp');
             $table->string('instagram')->nullable();
             $table->string('twitter')->nullable();
             $table->string('facebook')->nullable();

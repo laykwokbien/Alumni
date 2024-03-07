@@ -41,7 +41,7 @@
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <a href="{{ url('/create/berita') }}" class="btn btn-primary  mb-5">Create</a>
         @endif
-        <div class="d-flex flex-column-reverse">
+        <div class="d-flex flex-column">
             @foreach ($page['data'] as $item)
                 <div class="beritas d-flex flex-column flex-lg-row gap-3 mb-3 position-relative">
                     <img src="{{ asset("./storage/$item->foto") }}" alt="">
@@ -65,10 +65,13 @@
                 @endif
             @endforeach
             @if (count($page['data']) == 0)
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center vh-100">
                     <p>Tidak dapat menemukan Data</p>
                 </div>
             @endif
+        </div>
+        <div class="d-flex justify-content-center">
+            {{ $page['data'] }}
         </div>
 
     </div>

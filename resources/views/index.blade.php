@@ -16,7 +16,7 @@
         <div class="row gap-5 d-flex justify-content-center">
             @foreach ($page['jurusan'] as $col)
                 <div
-                    class="jurusan-each col-md-4 col-lg-3 d-flex flex-column justify-content-center align-items-center p-5 mb-5">
+                    class="jurusan-each col-6 col-md-4 col-lg-3 d-flex flex-column justify-content-center align-items-center p-5 mb-5">
                     <img class="object-fit-cover object-fit-scale mb-5" draggable="false" width="200px" height="200px"
                         src="{{ asset("storage/$col->foto") }}" alt="">
                     <p class="title-jurusan text-center">{{ $col->nama }}</p>

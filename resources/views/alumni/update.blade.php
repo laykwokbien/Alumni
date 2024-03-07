@@ -67,7 +67,7 @@
                 </div>
                 <div class="mb-3 w-100">
                     <label for="nisn" class="form-label">NISN: </label>
-                    <input autocomplete="off" type="number" name="nisn" id="nisn" minlength="10" maxlength="10"
+                    <input autocomplete="off" type="text" name="nisn" id="nisn" minlength="10" maxlength="10"
                         class="form-control" autocomplete="off" value="{{ $id->nisn }}">
                 </div>
                 <div class="mb-3 w-100">
@@ -94,7 +94,7 @@
                 </div>
                 <div class="mb-3 w-100">
                     <label for="tlp" class="form-label">No. Telp:</label>
-                    <input autocomplete="off" type="number" name="tlp" id="tlp" class="form-control"
+                    <input autocomplete="off" type="text" name="tlp" id="tlp" class="form-control"
                         autocomplete="off" value="{{ $id->tlp }}">
                 </div>
             </div>

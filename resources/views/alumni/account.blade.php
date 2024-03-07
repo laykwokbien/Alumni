@@ -20,7 +20,7 @@
             </form>
         </div>
     @endif
-    @if ($page['halaman'])
+    @if ($page['halaman'] == 'isalumni')
         <div class="position-absolute messages d-flex flex-column w-100 align-items-center pe-none mt-3">
             @if (session()->has('fail'))
                 @foreach (session('fail') as $col)
@@ -32,8 +32,9 @@
                 @endforeach
             @endif
         </div>
-        <div class="d-flex flex-column middlewarewidth align-items-center mt-5 justify-content-center" style="height: 80vh">
-            <form action="" method="post" class="d-flex flex-column">
+        <a class="btn btn-return" href="{{ url('/return') }}"><i class="bi bi-arrow-left"></i>Kembali</a>
+        <div class="container middlewarewidth h-75" style="height: 80vh">
+            <form action="" method="post" class="middleware d-flex flex-column gap-3 mt-5 h-100">
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">Email:</label>
@@ -60,6 +61,5 @@
                 <button class="btn btn-primary" type="submit" name="submit">Register</button>
             </form>
         </div>
-        <a class="btn" href="{{ url('/return') }}">Kembali</a>
     @endif
 @endsection

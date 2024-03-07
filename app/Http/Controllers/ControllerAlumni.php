@@ -14,7 +14,7 @@ class ControllerAlumni extends Controller
         $page = array(
             'halaman' => 'view',
             'delete' => false,
-            'data' => alumni::with('isjurusan')->get(),
+            'data' => alumni::with('isjurusan')->paginate(5),
             'jurusan' => jurusan::get(),
         );
 

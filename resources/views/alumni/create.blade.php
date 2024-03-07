@@ -23,15 +23,14 @@
             </div>
         @endif
     </div>
-    <div class="position-absolute d-flex justify-content-end align-items-md-end pe-none" style="width: 95%;height: 85%">
+    <div class="position-absolute d-flex justify-content-end mt-3 pe-none" style="width: 95%;height: 85%">
         <a href="{{ url('view/alumni') }}" class="text-black pe-auto" data-btn="backcreate">
             <span>&#8678;</span><span>Back</span>
         </a>
     </div>
-    <form class="container w-100 vh-100 d-flex align-items-center" action="" method="POST"
-        enctype="multipart/form-data">
+    <form class="container w-100 h-100 d-flex align-items-center mt-5" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="row w-100 gap-2 justify-content-center">
+        <div class="row w-100 h-100 gap-2 justify-content-center">
             <div class="col-md-5 d-flex flex-column align-items-center justify-content-center">
                 <div class="mb-3 w-100">
                     <label for="foto" class="form-label">Foto:</label>

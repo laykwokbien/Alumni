@@ -14,7 +14,7 @@
     <h1 class="text-center mb-3">Alumni</h1>
     <div class="row gap-5 d-flex justify-content-center w-100" style="box-sizing: border-box">
         @foreach ($page['alumni'] as $alumni)
-            <div class="col-6 col-lg-4 card">
+            <div class="col-md-5 col-lg-3 card">
                 <img src="{{ asset("/storage/$alumni->foto") }}" alt="">
                 <div class="desc">
                     <h2>{{ $alumni->nama }}</h2>
@@ -33,6 +33,8 @@
             Data Cannot be Found
         </div>
     @endif
-
+    <div class="d-flex justify-content-center">
+        {{ $page['alumni']->links() }}
+    </div>
     </div>
 @endsection

@@ -151,7 +151,7 @@ hr {
     height: 25px;
     position: absolute;
     right: 0;
-    z-index: 2;
+    z-index: 9999;
 }
 
 .nav-expand {
@@ -320,7 +320,6 @@ hr {
     }
 }
 .card {
-    width: 30%;
     height: fit-content;
     box-sizing: border-box;
     display: flex;
@@ -440,6 +439,21 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     transition: 0.3s ease-in;
 }
 
+.btn-return {
+    margin-top: 10px;
+}
+
+.btn-return i {
+    transition: 0.3s ease-in;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn-return:hover i {
+    transition: 0.3s ease-in;
+    margin-left: 10px;
+}
+
 @media only screen and (max-width: 628px) {
     a[data-btn="backcreate"] {
         top: 0;
@@ -518,6 +532,13 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     transition: all 0.3s ease-in-out;
     transform: scale(1.1);
 }
+@media only screen and (max-width: 576px) {
+    .jurusan-each {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
 /* Jurusan End */
 .table-respon {
     overflow-y: auto;
@@ -527,9 +548,18 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     width: 100%;
 }
 
+.table-page {
+    width: 100%;
+}
+
 @media only screen and (max-width: 992px) {
     .table-respon {
-        height: 50vh;
+        height: 70vh;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .table-respon {
+        height: 80vh;
     }
 }
 /* Ads Start */
@@ -586,15 +616,21 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     height: 100%;
     width: 100%;
 }
+
 .beritas img {
     object-fit: cover;
-    width: 70%;
-    height: 300px;
+    width: 50%;
+    height: 80%;
+}
+
+.berita-content {
+    height: inherit !important;
 }
 
 .berita-content p:nth-child(1) {
     font-size: 30px;
     font-weight: 600;
+    height: fit-content;
 }
 .berita-content div {
     overflow: hidden;
@@ -603,12 +639,15 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     margin-bottom: 2rem;
 }
 .berita-content a {
+    position: absolute;
+    bottom: 10px;
     border-radius: 20px;
     padding: 10px;
     width: fit-content;
     text-decoration: none;
     color: var(--second-color);
 }
+
 .berita-content i {
     transition: 0.3s all ease-in-out;
 }
@@ -656,6 +695,9 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
         width: 100%;
         height: 300px;
     }
+    .berita-content a {
+        padding: 0;
+    }
 }
 /* Berita End */
 /* Tentang Ads */
@@ -695,7 +737,7 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     height: 8px;
     left: 0;
     bottom: 0;
-    width: 15rem;
+    width: 100%;
 }
 /* End Video Profile */
 
@@ -706,7 +748,7 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
     right: unset;
 }
 .bg-burger .line {
-    background-color: var(--first-color);
+    background-color: var(--second-color);
 }
 .header {
     height: 80px;
@@ -730,6 +772,7 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
         position: fixed;
         height: 100%;
         width: 100%;
+        z-index: 99;
     }
 }
 /* Sidebar End */
@@ -739,26 +782,12 @@ footer {
     height: 25vh;
 }
 /* Footer End */
-/* Dashboard */
-.analysis {
-    width: fit-content;
-    background-color: var(--second-color);
-    padding: 1rem 2rem;
-    height: fit-content;
-    border-radius: 10px;
-    border: 3.5px solid var(--third-color);
+
+.pagination {
+    margin-left: 5rem;
 }
-.analysis p:nth-child(1) {
-    font-size: 20px;
-    font-weight: 600;
-}
-@media only screen and (max-width: 768px) {
-    .analysis {
-        margin: 0;
-        width: 50%;
-    }
-    .res {
-        width: 100% !important;
+@media only screen and (max-width: 576px) {
+    .pagination {
+        margin-left: 0;
     }
 }
-/* Dashboard End */

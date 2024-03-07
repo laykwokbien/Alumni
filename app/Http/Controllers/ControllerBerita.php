@@ -13,7 +13,7 @@ class ControllerBerita extends Controller
     {
         $page = array(
             'halaman' => 'berita',
-            'data' => berita::latest()->filter(request(['search']))->get(),
+            'data' => berita::latest()->filter(request(['search']))->paginate(3),
             'delete' => false,
         );
         return view('berita.index', compact('page'));

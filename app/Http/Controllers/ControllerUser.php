@@ -27,9 +27,16 @@ class ControllerUser extends Controller
     {
         $page = array(
             'halaman' => 'alumni',
-            'alumni' => alumni::latest()->filter(request(['search'], ['jurusan']))->get(),
+            'alumni' => alumni::latest()->filter(request(['search'], ['jurusan']))->paginate(6),
         );
         return view('alumni', compact('page'));
+    }
+    public function about()
+    {
+        $page = array(
+            'halaman' => 'about',
+        );
+        return view('about', compact('page'));
     }
     public function dashboard()
     {
@@ -39,14 +46,6 @@ class ControllerUser extends Controller
             'user' => User::get(),
         );
         return view('dashboard', compact('data'));
-    }
-
-    public function about()
-    {
-        $page = array(
-            'halaman' => 'about',
-        );
-        return view('about', compact('page'));
     }
     public function loginpg()
     {
@@ -81,15 +80,18 @@ class ControllerUser extends Controller
     {
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
-        };
+        }
+        ;
 
         if (Auth::guard('guru')->check()) {
             Auth::guard('guru')->logout();
-        };
+        }
+        ;
 
         if (Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
-        };
+        }
+        ;
         if (Auth::guard('alumni')->check()) {
             Auth::guard('alumni')->logout();
         }
@@ -194,7 +196,7 @@ class ControllerUser extends Controller
                 $info = array(
                     'id' => $item->id,
                     'nisn' => $item->nisn,
-                    'alumni' => true
+                    'alumni' => 'isalumni'
                 );
                 request()->session()->put('alumni', $info);
                 return redirect('/register/alumni');
@@ -206,7 +208,7 @@ class ControllerUser extends Controller
     {
         if (request()->session()->get('alumni') != null) {
             $data = request()->session()->get('alumni');
-            if ($data['alumni'] == true) {
+            if ($data['alumni'] == 'isalumni') {
                 $page = array(
                     'halaman' => $data['alumni'],
                     'data' => alumni::get(),
