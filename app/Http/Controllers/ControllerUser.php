@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ControllerUser extends Controller
 {
+    // Pages
     public function index()
     {
         $page = array(
@@ -41,12 +42,15 @@ class ControllerUser extends Controller
     public function dashboard()
     {
         $data = array(
-            'jurusan' => jurusan::get(),
             'alumni' => alumni::get(),
             'user' => User::get(),
+            'berita' => berita::get(),
+            'teacher' => Teacher::get(),
         );
         return view('dashboard', compact('data'));
     }
+    // End of Page
+    // Middleware
     public function loginpg()
     {
         $page = array(
@@ -80,18 +84,15 @@ class ControllerUser extends Controller
     {
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
-        }
-        ;
+        };
 
         if (Auth::guard('guru')->check()) {
             Auth::guard('guru')->logout();
-        }
-        ;
+        };
 
         if (Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
-        }
-        ;
+        };
         if (Auth::guard('alumni')->check()) {
             Auth::guard('alumni')->logout();
         }
@@ -135,7 +136,7 @@ class ControllerUser extends Controller
 
         return redirect('/login')->with('success', 'Akun berhasil untuk dibuat');
     }
-
+    // Admin
     public function viewuser()
     {
         $page = array(
@@ -166,6 +167,8 @@ class ControllerUser extends Controller
 
         return view('user.index', compact('page'));
     }
+    // End of Admin
+    // Alumni Account
     public function ConfirmPage()
     {
         if (request()->session()->get('alumni') != null) {
@@ -257,7 +260,8 @@ class ControllerUser extends Controller
 
         return redirect('/login')->with('success', 'Akun berhasil untuk dibuat');
     }
-
+    // End of Alumni
+    // Guru
     public function gotoCreateguru()
     {
         $page = array(
@@ -307,4 +311,5 @@ class ControllerUser extends Controller
         Teacher::where('id', $id)->delete();
         return redirect('/admin/view/guru')->with('success', 'Record has been successfully deleted');
     }
+    // End of Guru
 }

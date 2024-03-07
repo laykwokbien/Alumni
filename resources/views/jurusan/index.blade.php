@@ -38,7 +38,7 @@
             @endif
         </div>
     @endif
-    <div class="container d-flex flex-column flex-lg-row gap-3 justify-content-center align-items-center vh-100">
+    <div class="container d-flex flex-column flex-lg-row gap-3 justify-content-center align-items-center vh-100 mt-5">
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
             <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
