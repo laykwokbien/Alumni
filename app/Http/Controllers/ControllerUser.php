@@ -84,15 +84,18 @@ class ControllerUser extends Controller
     {
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
-        };
+        }
+        ;
 
         if (Auth::guard('guru')->check()) {
             Auth::guard('guru')->logout();
-        };
+        }
+        ;
 
         if (Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
-        };
+        }
+        ;
         if (Auth::guard('alumni')->check()) {
             Auth::guard('alumni')->logout();
         }

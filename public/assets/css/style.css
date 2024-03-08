@@ -44,7 +44,7 @@
     box-sizing: border-box;
 }
 
-.goup{
+.goup {
     display: flex;
     opacity: 0;
     justify-content: center;
@@ -61,14 +61,13 @@
     border-radius: 20px;
     pointer-events: none;
 }
-.goup i{
+.goup i {
     font-size: 1.4rem;
 }
 
-.active{
+.active {
     pointer-events: all;
     opacity: 1;
-    
 }
 /* Nav */
 
@@ -770,6 +769,7 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 
 /* Sidebar Start */
 .bg-burger {
+    position: fixed;
     top: -20px;
     left: -20px;
     right: unset;
@@ -811,37 +811,37 @@ footer {
     background-color: var(--third-color);
     color: #fefefe;
 }
-footer img{
+footer img {
     width: 50%;
     height: 100%;
 }
-footer p:not(.footer-head){
+footer p:not(.footer-head) {
     font-size: 16px;
 }
-footer .bi{
-    transition: .3s all ease-in-out;
+footer .bi {
+    transition: 0.3s all ease-in-out;
     font-size: 20px;
 }
-footer .bi-whatsapp{
+footer .bi-whatsapp {
     color: green;
 }
-footer .bi-facebook{
+footer .bi-facebook {
     color: var(--second-color);
 }
-footer .bi-instagram{
+footer .bi-instagram {
     color: purple;
 }
-footer .bi:hover{
-    transition: .3s all ease-in-out;
+footer .bi:hover {
+    transition: 0.3s all ease-in-out;
     color: #fefefe;
 }
-.footer-head{
+.footer-head {
     position: relative;
     display: flex;
     flex-direction: column;
     font-size: 1.6rem;
 }
-.footer-head::after{
+.footer-head::after {
     position: absolute;
     content: "";
     bottom: -5px;
@@ -849,17 +849,17 @@ footer .bi:hover{
     height: 5px;
     background-color: var(--fifth-color);
 }
-footer a{
+footer a {
     text-decoration: none;
     color: #aaa;
-    transition: .3s all ease-in-out;
+    transition: 0.3s all ease-in-out;
 }
-footer a:hover{
-    transition: .3s all ease-in-out;
+footer a:hover {
+    transition: 0.3s all ease-in-out;
     color: #fff;
 }
-@media only screen and (max-width:576px){
-    footer img{
+@media only screen and (max-width: 576px) {
+    footer img {
         width: 100%;
     }
 }
