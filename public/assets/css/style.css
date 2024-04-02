@@ -729,8 +729,9 @@ a[data-btn="backcreate"]:hover span:nth-child(1) {
 /* Tentang Ads */
 .ads-tentang {
     cursor: pointer;
-    background-image: url("../images/logo_jurusan/img/img/lapangan.png");
+    background-image: url("../images/logo_jurusan/lapangan.png");
     background-position: center;
+    background-size: cover;
     height: 50vh;
     margin: 0;
     text-decoration: none;

@@ -38,9 +38,9 @@
             @endif
         </div>
     @endif
-    <div class="container d-flex flex-column flex-lg-row gap-3 justify-content-center align-items-center vh-100 mt-5">
+    <div class="container d-flex flex-column gap-3 justify-content-center align-items-center vh-100">
         @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form class="align-self-start mt-5 mb-5" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="foto" class="form-label">Foto:</label>
@@ -58,7 +58,7 @@
                 <thead>
                     <th>#</th>
                     <th>Nama</th>
-                    <th>Digunakan</th>
+                    <th>Jumlah</th>
                     @if (Auth::guard('admin')->check() || Auth::guard('guru')->check())
                         <th>Updated</th>
                         <th>Aksi</th>

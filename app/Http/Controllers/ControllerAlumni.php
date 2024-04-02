@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\alumni;
 use App\Models\jurusan;
 use Illuminate\Http\Request;
@@ -139,6 +140,8 @@ class ControllerAlumni extends Controller
         }
 
         if (request()->file('foto') != '') {
+            $data = alumni::find($id);
+            Storage::delete($data->foto);
             request()->file('foto')->store('alumnis');
             alumni::where('id', $id)->update([
                 'foto' => request()->file('foto')->store('alumnis'),
@@ -184,6 +187,9 @@ class ControllerAlumni extends Controller
     }
     public function delete($id)
     {
+        $data = alumni::find($id);
+        Storage::delete($data->foto);
+
         alumni::where('id', $id)->delete();
 
         return redirect('/view/alumni')->with('success', 'Record berhasil untuk dihapus');

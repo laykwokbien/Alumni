@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\jurusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -70,6 +71,8 @@ class ControllerJurusan extends Controller
         }
 
         if (request()->file("foto") != "") {
+            $data = jurusan::find($id);
+            Storage::delete($data->foto);
             request()->file('foto')->store("jurusans");
             jurusan::where('id', $id)->update([
                 'foto' => request()->file('foto')->store('jurusans'),
@@ -97,11 +100,13 @@ class ControllerJurusan extends Controller
     {
 
         $jurusan = jurusan::with('alumnis')->find($id);
-
+        
+        
         if (count($jurusan->alumnis) >= 1) {
             return redirect('/create/jurusan')->with('messages', 'Tidak dapat menghapus jurusan ini dikarenakan terdapat Alumni yang telah menggunakan jurusan ini!');
         }
-
+        
+        Storage::delete($jurusan->foto);
         jurusan::where('id', $id)->delete();
 
         return redirect('/create/jurusan')->with('success', 'Record berhasil untuk dihapus');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Models\berita;
 use Illuminate\Http\Request;
@@ -78,8 +79,9 @@ class ControllerBerita extends Controller
         }
 
         if (request()->file() != null) {
+            $data = berita::find($id);
+            Storage::delete($data->foto);
             request()->file('foto')->store('/berita');
-
             berita::where('id', $id)->update([
                 'foto' => request()->file('foto')->store('/foto'),
                 'judul' => request()->input('judul'),
@@ -107,6 +109,8 @@ class ControllerBerita extends Controller
 
     public function delete($id)
     {
+        $data = berita::find($id);
+        Storage::delete($data->foto);
         berita::where('id', $id)->delete();
 
         return redirect('/berita')->with('success', 'Data berhasil untuk dihapus');
@@ -115,6 +119,7 @@ class ControllerBerita extends Controller
     public function show($id)
     {
         $id = berita::find($id);
+
         $page = array(
             'halaman' => 'beritakonten',
         );
